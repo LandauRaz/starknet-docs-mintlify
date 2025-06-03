@@ -10,6 +10,7 @@
   "favicon": "/favicon.svg",
   "navigation": {
     "tabs": [
+      {"tab": "tab1"}, {"tab": "tab2"},
       {
         "tab": "Guides",
         "groups": [
