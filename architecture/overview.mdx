@@ -1,0 +1,18 @@
+---
+title: "Architecture overview"
+sidebarTitle: "Overview"
+---
+
+Welcome to the Architecture section of the Starknet Docs! 🏛️
+
+Starknet is a coordinated system, with each element in its architecture playing a specific yet interconnected role.
+
+As with other blockchains, everything starts with an [account](/architecture/accounts/). On Starknet, accounts are smart contracts, a model which is known as native account abstraction. This allows for flexible authorization logic like multisig, session keys, or passkey-based authentication — all without changes to the protocol itself. When users want to interact with the network, they send [transactions](/architecture/transactions/). These can invoke contract functions, deploy new contracts, or register new classes. Some transactions may involve communication between Ethereum and Starknet, which are handled through [L1↔L2 messaging](/architecture/messaging/) and enable secure bridges such as [StarkGate](/architecture/starkgate/).
+
+Periodically, transactions are collected and ordered into [blocks](/architecture/blocks/), which include a [cryptographic](/architecture/cryptography/) commitment the [state](/architecture/state/) of the network after executing them. To ensure that state transitions are valid, Starknet uses [SHARP](/architecture/sharp/) to generate and aggregate proofs of running the [SNOS](/architecture/os/) program. These proofs compress the entire block’s execution into a succinct artifact which are submitted to Ethereum to be verified, so that Starknet’s execution can be trusted without re-running it. Starknet also ensures access to the data involved in the computation through [data availability](/architecture/data-availability/), publishing compressed state diffs to Ethereum so the full state can be reconstructed and verified.
+
+All of this — execution, proof generation, and L1 publishing — isn’t free, which is where [fees](/architecture/fees/) come in. Users pay fees to cover the cost of using network resources, and these fees are paid in [STRK](/architecture/strk/), Starknet’s native token. STRK is also used to power Starknet’s [staking protocol](/architecture/staking/), where validators selected from STRK stakers help secure the sequencing layer and validate block production. This mechanism is designed to support decentralization and provide economic guarantees around block inclusion and ordering.
+
+All together, these elements form a tightly integrated architecture, enabling scalable and expressive applications with low fees and strong security — all without compromising on decentralization or Ethereum alignment.
+
+Now that you’ve got the big picture, put on your goggles and deep dive into whichever architectural pieces intrigue you most! 🤿

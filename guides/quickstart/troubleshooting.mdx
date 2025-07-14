@@ -1,0 +1,123 @@
+---
+title: "Deploy your first Starknet contract guide troubleshooting"
+sidebarTitle: "Troubleshooting"
+---
+
+## Setting up your environment
+
+### Starkli unable to detect shell
+
+Procedure
+
+1. Detect whether your shell is `zsh` or `bash`:
+
+   ```shell
+   echo $SHELL
+   
+   ```
+
+2. Add:
+
+   ```shell
+   . /Users/<NAME>/.starkli/env
+   
+   ```
+
+   to either `~/.zshrc` or `~/.bashrc`.
+
+3. Restart the terminal, and run either:
+
+   ```shell
+   source ~/.zshrc
+   
+   ```
+
+   or:
+
+   ```shell
+   source ~/.bashrc
+   
+   ```
+
+## Declaring, deploying, and interacting with HelloStarknet locally
+
+### `scarb build` fails to run version command for Rust
+
+Starting from Scarb version 2.10 and Starknet Foundry version 0.37.0, Rust is longer required for projects with the following line in their `Scarb.toml` file:
+
+```cairo
+[tool.scarb]
+allow-prebuilt-plugins = ["snforge_std"]
+cairoCopied!
+```
+
+If not all three conditions are met and Rust is not installed, running `scarb build` (and `scarb test`) will result in a compilation error. To resolve this, either update Scarb, Starknet Foundry, and your `Scarb.toml` file accordingly or [install Rust](https://www.rust-lang.org/tools/install).
+
+### `starkli declare` unable to identify compiler version
+
+When using `starkli declare`, Starkli will do its best to identify the compiler version of the declared class. In case it fails, the `--compiler-version` flag can be used to specify the version of the compiler.
+
+Procedure
+
+1. Find the compiler versions supported by Starkli by running:
+
+   ```shell
+   starkli declare --help
+   
+   ```
+
+   and looking for the possible values of the `--compiler-version` flag.
+
+2. Find the current Scarb version in use:
+
+   ```shell
+   scarb --version
+   
+   ```
+
+3. In case a different compiler version is required, switch to a different Scarb version using `asdf`:
+
+   1. Install the desired Scarb version:
+
+      ```shell
+      asdf install scarb <VERSION>
+      
+      ```
+
+   2. Select the desired Scarb version as the local version for the project:
+
+      ```shell
+      asdf set scarb <VERSION>
+      
+      ```
+
+## Deploying and interacting with HelloStarknet on Sepolia
+
+### Fetching a predeployed Sepolia account
+
+Procedure
+
+1. Export the private key from your wallet by:
+
+   * For Ready wallets: navigating to `Settings` → `<YOUR_ACCOUNT>` → `Export Private Key`.
+
+   * For Braavos wallets: navigating to `Settings` → `Privacy and Security` → `Export Private Key`.
+
+2. Create a keystore file by running:
+
+   ```shell
+   starkli signer keystore from-key keystore.json
+   
+   ```
+
+   and entering the private key of your smart wallet, along with a password that will be used to encrypt it.
+
+3. Fetch the account by running:
+
+   ```shell
+   starkli account fetch \
+       <SMART_WALLET_ADDRESS> \
+       --output account.json \
+       --network=sepolia
+   
+   ```

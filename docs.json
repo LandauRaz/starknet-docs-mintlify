@@ -1,59 +1,112 @@
 {
   "$schema": "https://mintlify.com/docs.json",
   "theme": "mint",
-  "name": "Mint Starter Kit",
+  "name": "Starknet Documentation",
   "colors": {
-    "primary": "#16A34A",
-    "light": "#07C983",
-    "dark": "#15803D"
+    "primary": "#2d51c7",
+    "light": "#2d51c7",
+    "dark": "#2d51c7"
   },
-  "favicon": "/favicon.svg",
+  "contextual": {
+    "options": [
+      "copy",
+      "view",
+      "chatgpt",
+      "claude"
+    ]
+  },
+  "fonts":{
+    "heading": {
+      "family": "Inter"
+    },
+    "body": {
+      "family": "Inter"
+    }
+  },
+  "background": {
+    "decoration": "gradient"
+  },
+  "favicon": "/favicon.png",
   "navigation": {
-    "tabs": [
-      {"tab": "tab"},
-      {"tab": "tab"},
-      {"tab": "tab"},
-      {"tab": "tab"},
+    "groups": [
       {
-        "tab": "Guides",
-        "groups": [
+        "group": " ",
+        "pages": [
+          "index",
           {
-            "group": "Get Started",
+            "group": "Quickstart",
             "pages": [
-              "index",
-              "quickstart",
-              "development"
+              {
+                "group": "Deploy your first contract",
+                "pages": [
+                  "guides/quickstart/overview",
+                  "guides/quickstart/environment-setup",
+                  "guides/quickstart/hellostarknet",
+                  "guides/quickstart/devnet",
+                  "guides/quickstart/sepolia",
+                  "guides/quickstart/next-steps",
+                  "guides/quickstart/troubleshooting"
+                ]
+              },
+              {
+                "group": "Become a validator",
+                "pages": [
+                  "guides/becoming-a-validator/overview",
+                  "guides/becoming-a-validator/prerequisite",
+                  "guides/becoming-a-validator/stake",
+                  "guides/becoming-a-validator/pathfinder",
+                  "guides/becoming-a-validator/next-steps"
+                ]
+              }
             ]
           },
           {
-            "group": "Essentials",
+            "group": "Architecture",
             "pages": [
-              "essentials/markdown",
-              "essentials/code",
-              "essentials/images",
-              "essentials/settings",
-              "essentials/navigation",
-              "essentials/reusable-snippets"
-            ]
-          }
-        ]
-      },
-      {
-        "tab": "API Reference",
-        "groups": [
-          {
-            "group": "API Documentation",
-            "pages": [
-              "api-reference/introduction"
+              "architecture/overview",
+              "architecture/accounts",
+              "architecture/blocks",
+              "architecture/cryptography",
+              "architecture/data-availability",
+              "architecture/fees",
+              "architecture/messaging",
+              "architecture/sharp",
+              "architecture/os",
+              "architecture/staking",
+              "architecture/starkgate",
+              "architecture/state",
+              "architecture/strk",
+              "architecture/transactions"
             ]
           },
           {
-            "group": "Endpoint Examples",
+            "group": "Tooling",
             "pages": [
-              "api-reference/endpoint/get",
-              "api-reference/endpoint/create",
-              "api-reference/endpoint/delete",
-              "api-reference/endpoint/webhook"
+              "tools/overview"
+            ]
+          },
+          {
+            "group": "Ecosystem",
+            "pages": [
+              "ecosystem/overview"
+            ]
+          },
+          {
+            "group": "Resources",
+            "pages": [
+              "link/bug",
+              "resources/chain-info",
+              "resources/compatibility",
+              "link/openrpc",
+              "resources/version-notes",
+              {
+                "group": "Transaction fields and hash calculations",
+                "pages": [
+                  "resources/transactions-reference",
+                  "resources/messaging-reference",
+                  "resources/starkgate-reference"
+                ]
+              }
             ]
           }
         ]
@@ -62,18 +115,13 @@
     "global": {
       "anchors": [
         {
-          "anchor": "Documentation",
-          "href": "https://mintlify.com/docs",
-          "icon": "book-open-cover"
-        },
-        {
           "anchor": "Community",
-          "href": "https://mintlify.com/community",
-          "icon": "slack"
+          "href": "https://community.starknet.io/",
+          "icon": "user-group"
         },
         {
           "anchor": "Blog",
-          "href": "https://mintlify.com/blog",
+          "href": "https://www.starknet.io/blog/",
           "icon": "newspaper"
         }
       ]
@@ -86,21 +134,22 @@
   "navbar": {
     "links": [
       {
-        "label": "Support",
-        "href": "mailto:hi@mintlify.com"
+        "label": "Contact Us",
+        "href": "https://forms.reform.app/starkware/talk-to-us-dev-hub/3miubw"
       }
     ],
     "primary": {
       "type": "button",
-      "label": "Dashboard",
-      "href": "https://dashboard.mintlify.com"
+      "label": "Bridge",
+      "href": "https://starkgate.starknet.io/"
     }
   },
   "footer": {
     "socials": {
-      "x": "https://x.com/mintlify",
-      "github": "https://github.com/mintlify",
-      "linkedin": "https://linkedin.com/company/mintlify"
+      "discord": "https://discord.gg/starknet-community",
+      "github": "https://github.com/keep-starknet-strange/awesome-starknet",
+      "youtube": "https://www.youtube.com/channel/UCnDWguR8mE2oDBsjhQkgbvg",
+      "x": "https://twitter.com/Starknet"
     }
   }
 }
