@@ -1,6 +1,6 @@
 {
   "$schema": "https://mintlify.com/docs.json",
-  "theme": "mint",
+  "theme": "maple",
   "name": "Starknet Documentation",
   "colors": {
     "primary": "#2d51c7",
@@ -25,102 +25,64 @@
   "navigation": {
     "groups": [
       {
-        "group": " ",
+        "group": "Getting started",
+        "icon": "seedling",
         "pages": [
           "index",
           {
             "group": "Quickstart",
             "pages": [
-              {
-                "group": "Deploy your first contract",
-                "pages": [
-                  "guides/quickstart/overview",
-                  "guides/quickstart/environment-setup",
-                  "guides/quickstart/hellostarknet",
-                  "guides/quickstart/devnet",
-                  "guides/quickstart/sepolia",
-                  "guides/quickstart/next-steps",
-                  "guides/quickstart/troubleshooting"
-                ]
-              },
-              {
-                "group": "Become a validator",
-                "pages": [
-                  "guides/becoming-a-validator/overview",
-                  "guides/becoming-a-validator/prerequisite",
-                  "guides/becoming-a-validator/stake",
-                  "guides/becoming-a-validator/pathfinder",
-                  "guides/becoming-a-validator/next-steps"
-                ]
-              }
-            ]
-          },
-          {
-            "group": "Architecture",
-            "pages": [
-              "architecture/overview",
-              "architecture/accounts",
-              "architecture/blocks",
-              "architecture/cryptography",
-              "architecture/data-availability",
-              "architecture/fees",
-              "architecture/messaging",
-              "architecture/sharp",
-              "architecture/os",
-              "architecture/staking",
-              "architecture/starkgate",
-              "architecture/state",
-              "architecture/strk",
-              "architecture/transactions"
-            ]
-          },
-          {
-            "group": "Tooling",
-            "pages": [
-              "tools/overview"
+              "guides/quickstart/environment-setup",
+              "guides/quickstart/hellostarknet",
+              "guides/quickstart/devnet",
+              "guides/quickstart/sepolia",
+              "guides/quickstart/next-steps",
+              "guides/quickstart/troubleshooting"
             ]
           },
           {
             "group": "Ecosystem",
             "pages": [
+              "tools/overview",
               "ecosystem/overview"
-            ]
-          },
-          {
-            "group": "Resources",
-            "pages": [
-              "link/bug",
-              "resources/chain-info",
-              "resources/compatibility",
-              "link/openrpc",
-              "resources/version-notes",
-              {
-                "group": "Transaction fields and hash calculations",
-                "pages": [
-                  "resources/transactions-reference",
-                  "resources/messaging-reference",
-                  "resources/starkgate-reference"
-                ]
-              }
             ]
           }
         ]
+      },
+      {
+        "group": "Core concepts",
+        "icon": "atom-simple",
+        "pages": [
+          "architecture/overview",
+          "architecture/accounts",
+          "architecture/blocks",
+          "architecture/cryptography",
+          "architecture/data-availability",
+          "architecture/fees",
+          "architecture/messaging",
+          "architecture/sharp",
+          "architecture/os",
+          "architecture/staking",
+          "architecture/starkgate",
+          "architecture/state",
+          "architecture/strk",
+          "architecture/transactions"
+        ]
+      },
+      {
+        "group": "References",
+        "icon": "books",
+        "pages": [
+          "resources/chain-info",
+          "resources/compatibility",
+          "link/openrpc",
+          "resources/transactions-reference",
+          "resources/messaging-reference",
+          "resources/starkgate-reference",
+          "resources/version-notes"
+        ]
       }
-    ],
-    "global": {
-      "anchors": [
-        {
-          "anchor": "Community",
-          "href": "https://community.starknet.io/",
-          "icon": "user-group"
-        },
-        {
-          "anchor": "Blog",
-          "href": "https://www.starknet.io/blog/",
-          "icon": "newspaper"
-        }
-      ]
-    }
+    ]
   },
   "logo": {
     "light": "/logo/light.svg",
@@ -129,15 +91,16 @@
   "navbar": {
     "links": [
       {
-        "label": "Contact Us",
-        "href": "https://forms.reform.app/starkware/talk-to-us-dev-hub/3miubw"
+        "label": "Blog",
+        "href": "https://www.starknet.io/blog/",
+        "icon": "user-group"
+      },
+      {
+        "label": "Community",
+        "href": "https://community.starknet.io/",
+        "icon": "newspaper"
       }
-    ],
-    "primary": {
-      "type": "button",
-      "label": "Bridge",
-      "href": "https://starkgate.starknet.io/"
-    }
+    ]
   },
   "footer": {
     "socials": {
