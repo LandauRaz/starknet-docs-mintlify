@@ -8,12 +8,7 @@
     "dark": "#2d51c7"
   },
   "contextual": {
-    "options": [
-      "copy",
-      "view",
-      "chatgpt",
-      "claude"
-    ]
+    "options": []
   },
   "fonts":{
     "heading": {
