@@ -73,13 +73,13 @@
         "group": "References",
         "icon": "books",
         "pages": [
-          "resources/chain-info",
-          "resources/compatibility",
+          "references/chain-info",
+          "references/compatibility",
           "link/openrpc",
-          "resources/transactions-reference",
-          "resources/messaging-reference",
-          "resources/starkgate-reference",
-          "resources/version-notes"
+          "references/transactions-reference",
+          "references/messaging-reference",
+          "references/starkgate-reference",
+          "references/version-notes"
         ]
       }
     ]

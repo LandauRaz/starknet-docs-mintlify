@@ -42,13 +42,13 @@ Starknet v0.13.6 is live on Testnet and scheduled be live on Mainnet on July 8th
 
 Starknet v0.13.6 is a configuration change done to support integration by the [S-Two prover](https://docs.starknet.io/stwo-book/), including:
 
-* Introducing builtin tracking and temporarily disabling Cairo Native: The [Starknet OS](/architecture/snos/) now tracks individual builtins usages, [capping the number of builtins that may fit inside each block](/resources/chain-info/#block_builtin_limits). Since [Cairo Native](https://github.com/lambdaclass/cairo_native) does currently not support this kind of tracking, its usage is temporarily disabled and will be enabled again once this capability is supported.
+* Introducing builtin tracking and temporarily disabling Cairo Native: The [Starknet OS](/architecture/snos/) now tracks individual builtins usages, [capping the number of builtins that may fit inside each block](/references/chain-info/#block_builtin_limits). Since [Cairo Native](https://github.com/lambdaclass/cairo_native) does currently not support this kind of tracking, its usage is temporarily disabled and will be enabled again once this capability is supported.
 
   <Note>
     Cairo Native hasn't yet been enabled on Mainnet, and disabling it only affects Sepolia.
   </Note>
 
-* Reducing maximum block size: The amount of L2 gas that a block can contain is [decreased from 5B to 4B L2 gas](/resources/chain-info/#current_limits).
+* Reducing maximum block size: The amount of L2 gas that a block can contain is [decreased from 5B to 4B L2 gas](/references/chain-info/#current_limits).
 
 Additional resources
 
