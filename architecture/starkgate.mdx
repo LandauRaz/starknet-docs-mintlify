@@ -7,16 +7,16 @@ title: "StarkGate"
 [StarkGate](https://starkgate.starknet.io), developed by StarkWare, bridges ETH and ERC-20 tokens between Ethereum and Starknet. Its various [components](#components) enable anyone to easily [deposit funds to Starknet (with and without a message attached), withdraw funds to Ethereum, and add a token to StarkGate](#procedures).
 
 <Warning>
-   Following [Maker DAO’s announcement](https://twitter.com/MakerDAO/status/1746977683190251591?s=20), StarkWare launched a new set of DAI bridge and token contracts under StarkGate. This new DAI token retains the same contract 'symbol' and 'name' as the existing one, and to differentiate between the two, the old DAI is referred to as “DAI v0” while the new DAI is simply referred to as “DAI”.
+   Following [Maker DAO's announcement](https://twitter.com/MakerDAO/status/1746977683190251591?s=20), StarkWare launched a new set of DAI bridge and token contracts under StarkGate. This new DAI token retains the same contract 'symbol' and 'name' as the existing one, and to differentiate between the two, the old DAI is referred to as “DAI v0” while the new DAI is simply referred to as “DAI”.
    
-   Withdrawal of DAI v0 tokens is still possible with no limitations, but depositing DAI v0 using the DAI v0 bridge is disabled. Users are **strongly** encouraged to migrate to the new DAI token, as it cannot support StarkGate’s latest features (such as Smart Deposits and Withdrawal Limits) and will stop being compatible with Starknet altogether over time.
+   Withdrawal of DAI v0 tokens is still possible with no limitations, but depositing DAI v0 using the DAI v0 bridge is disabled. Users are **strongly** encouraged to migrate to the new DAI token, as it cannot support StarkGate's latest features (such as Smart Deposits and Withdrawal Limits) and will stop being compatible with Starknet altogether over time.
    
-   To migrate from DAI v0 to DAI, either swap your DAI v0 for DAI using one of Starknet’s [swap apps and aggregators](https://www.starknet.io/dapps/?type=live\&tags=216) or withdraw your current DAI v0 tokens to L1 using and re-deposit them using StarkGate (which automatically issues the new DAI).
+   To migrate from DAI v0 to DAI, either swap your DAI v0 for DAI using one of Starknet's [swap apps and aggregators](https://www.starknet.io/dapps/?type=live\&tags=216) or withdraw your current DAI v0 tokens to L1 using and re-deposit them using StarkGate (which automatically issues the new DAI).
 </Warning>
 
 ## Components
 
-The following table details StarkGate’s key components:
+The following table details StarkGate's key components:
 
 | Contract                                 | Description                                                                                                                                                                                               |
 | ---------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -38,7 +38,7 @@ In addition, prior to StarkGate 2.0 (Mainnet: January 2024) tokens were bridged 
   For the complete list of legacy bridges, see the [`bridged_tokens`](https://github.com/starknet-io/starknet-addresses/tree/master/bridged_tokens) directory on GitHub.
 </Note>
 
-The following is an overall illustration of StarkGate’s various components:
+The following is an overall illustration of StarkGate's various components:
 
 <Frame>
   <img src="/images/4a7d9f95-sg-architecture.png" />
@@ -49,24 +49,24 @@ The following is an overall illustration of StarkGate’s various components:
 The following sections detail the procedures enabled by StarkGate, along with the instructions to perform them.
 
 <Warning>
-  For adding a token to Starknet, see [Joel Mun’s blog](https://9oelm.github.io/2024-03-28-making-sense-of-starknet-architecture-and-l1-l2-messaging/#enroll-a-token-bridge). Note that enrolling a new bridge does not add it to StarkGate’s GUI.
+  For adding a token to Starknet, see [Joel Mun's blog](https://9oelm.github.io/2024-03-28-making-sense-of-starknet-architecture-and-l1-l2-messaging/#enroll-a-token-bridge). Note that enrolling a new bridge does not add it to StarkGate's GUI.
 </Warning>
 
 All procedures are subject to [fees](/architecture/messaging/#l1-l2-message-fees) to account for L1→L2 message costs. Fees for depositing funds or enrolling a token bridge on StarkGate can be estimated using the [`estimateDepositFeeWei`](/resources/starkgate-reference/#estimateDepositFeeWei) or [`estimateEnrollmentFeeWei`](/resources/starkgate-reference/#estimateEnrollmentFeeWei) function.
 
-To invoke onchain contracts, use [Starknet Foundry’s `sncast`](https://foundry-rs.github.io/starknet-foundry/starknet/sncast-overview.html), [Starkli](/tools/overview/), or a [block explorer](/ecosystem/overview/). To get the onchain addresses of StarkGate’s contracts, see [Important addresses](/resources/chain-info/#starkgate).
+To invoke onchain contracts, use [Starknet Foundry's `sncast`](https://foundry-rs.github.io/starknet-foundry/starknet/sncast-overview.html), [Starkli](/tools/overview/), or a [block explorer](/ecosystem/overview/). To get the onchain addresses of StarkGate's contracts, see [Important addresses](/resources/chain-info/#starkgate).
 
-For more information on StarkGate’s various functions, see [StarkGate functions and events](/resources/starkgate-reference/).
+For more information on StarkGate's various functions, see [StarkGate functions and events](/resources/starkgate-reference/).
 
 ### Depositing funds
 
-Using StarkGate to deposit L1 funds into the L2 Starknet requires StarkGate’s `deposit` function. The `deposit` function does the following:
+Using StarkGate to deposit L1 funds into the L2 Starknet requires StarkGate's `deposit` function. The `deposit` function does the following:
 
-1. Transfers the funds from the user’s Ethereum account to the StarkGate L1 contract.
+1. Transfers the funds from the user's Ethereum account to the StarkGate L1 contract.
 
 2. Emits a `Deposit` event that includes the L1 and L2 addresses of the user, and the amount deposited.
 
-3. Sends a message to the corresponding L2 bridge with the amount deposited, and the recipient’s address.
+3. Sends a message to the corresponding L2 bridge with the amount deposited, and the recipient's address.
 
 Subsequently, the funds should be transferred to Starknet so that you can begin using them.
 
@@ -74,7 +74,7 @@ For more information on what happens during the transfer process, see [Deposit l
 
 #### Cancelling a deposit
 
-To ensure self-custody, StarkGate enables you to cancel a deposit if, after depositing funds with the `deposit` function on L1, you don’t see your funds appear on L2 within a reasonable amount of time.
+To ensure self-custody, StarkGate enables you to cancel a deposit if, after depositing funds with the `deposit` function on L1, you don't see your funds appear on L2 within a reasonable amount of time.
 
 In order to guard against an attack, it takes approximately five days to cancel a deposit. From the moment StarkGate receives the cancellation request, a counter begins. When exactly five days have passed, and the funds still do not appear on L2, you can reclaim the deposit.
 
@@ -92,7 +92,7 @@ The `depositWithMessage` function enables sending a deposit with a message. `dep
 
 Upon completion, the `depositWithMessage` function triggers a call to a callback function, named `on_receive`, on the L2 contract that receives the deposit. The `on_receive` function receives the deposit message as input.
 
-`on_receive` must return `true` for the deposit to succeed. If `on_receive` returns `false`, or if the recipient contract does not include the `on_receive` function, the `depositWithMessage` function’s L1 handler fails. The user can recover their funds using the `depositWithMessageCancelRequest` function.
+`on_receive` must return `true` for the deposit to succeed. If `on_receive` returns `false`, or if the recipient contract does not include the `on_receive` function, the `depositWithMessage` function's L1 handler fails. The user can recover their funds using the `depositWithMessageCancelRequest` function.
 
 To enable deposits with messages in your application:
 
@@ -108,13 +108,13 @@ Step 1: Initiating a deposit on L1
 
 2. The function does the following:
 
-   * Transfers the funds from the user’s account to the Starknet bridge.
+   * Transfers the funds from the user's account to the Starknet bridge.
 
    * Emits a `Deposit` event that includes the L1 and L2 addresses of the user, and the amount deposited.
 
-   * Sends a message to the corresponding L2 bridge with the amount deposited, and the recipient’s address.
+   * Sends a message to the corresponding L2 bridge with the amount deposited, and the recipient's address.
 
-   Starknet’s sequencer is now aware of the deposit transaction.
+   Starknet's sequencer is now aware of the deposit transaction.
 
 3. The sequencer waits for enough L1 block confirmations to fill its quota to run before the corresponding deposit transaction is initiated on L2. During this period of time, the status of the L2 deposit transaction is [`NOT_RECEIVED`](/architecture/transactions/#transaction_lifecycle).
 
@@ -122,7 +122,7 @@ Step 2: Triggering a deposit on L2
 
 1. The sequencers refer to the deposit request by triggering the L1 handler using the [`handle_deposit`](https://github.com/starkware-libs/starkgate-contracts/blob/28f4032b101003b2c6682d753ea61c86b732012c/src/starkware/starknet/apps/starkgate/cairo/token_bridge.cairo#L135) function on the L2 bridge.
 
-2. The `handle_deposit` function verifies that the deposit indeed came from the corresponding L1 bridge. It then calls the relevant token’s contract on Starknet and mints the specified amount of the token on L2 for the user.
+2. The `handle_deposit` function verifies that the deposit indeed came from the corresponding L1 bridge. It then calls the relevant token's contract on Starknet and mints the specified amount of the token on L2 for the user.
 
 3. The sequencers complete constructing the block.
 
@@ -130,23 +130,23 @@ The status of the deposit request is now [`ACCEPTED_ON_L2`](/architecture/transa
 
 Step 3: Proving the block that includes the deposit
 
-1. Starknet’s provers prove the validity of the block and submit a state update to L1.
+1. Starknet's provers prove the validity of the block and submit a state update to L1.
 
 2. The message confirming transfer of the funds is cleared from the Starknet Core Contract, and the fact that the user has transferred their funds is part of the now finalized state of Starknet.
 
 <Note>
-  If the message wasn’t on L1 to begin with, that is, if the deposit request was fraudulently created on Starknet, the state update fails.
+  If the message wasn't on L1 to begin with, that is, if the deposit request was fraudulently created on Starknet, the state update fails.
 </Note>
 
 ### Withdrawing funds
 
-Using StarkGate to withdraw funds from Starknet requires StarkGate’s `initiate_token_withdraw` function to initiate a withdrawal. The function does the following:
+Using StarkGate to withdraw funds from Starknet requires StarkGate's `initiate_token_withdraw` function to initiate a withdrawal. The function does the following:
 
-* Burns the transferred amount of tokens from the L2 balance of the withdrawal’s initiator.
+* Burns the transferred amount of tokens from the L2 balance of the withdrawal's initiator.
 
-* Sends a message to the relevant L1 bridge with the amount to be transferred and the recipient’s Ethereum address.
+* Sends a message to the relevant L1 bridge with the amount to be transferred and the recipient's Ethereum address.
 
-Subsequently, the funds should be transferred to the recipient’s Ethereum address, and should be available after the next L1 state update.
+Subsequently, the funds should be transferred to the recipient's Ethereum address, and should be available after the next L1 state update.
 
 For more information on what happens during the transfer process, see [Withdrawal lifecycle](#withdrawal_lifecycle).
 
@@ -156,7 +156,7 @@ By default, StarkGate imposes no limit on withdrawals. However, in order to miti
 
 If a serious security issue arises, the security agent in the StarkGate contract can limit withdrawals to 5% of the Total Value Locked (TVL) per day for any affected token by calling the `setWithdrawLimitPCT()` function in the `WithdrawalLimit.sol` contract. A dedicated team can then investigate and resolve the issue.
 
-Only a security admin quorum can disable the withdrawal limit. The quorum will consist of Starknet Foundation members, Starknet ecosystem contributors, and StarkWare representatives. This diverse group will ensure that decisions reflect the Starknet community’s broad interests.
+Only a security admin quorum can disable the withdrawal limit. The quorum will consist of Starknet Foundation members, Starknet ecosystem contributors, and StarkWare representatives. This diverse group will ensure that decisions reflect the Starknet community's broad interests.
 
 This approach, blending manual oversight with automated detection, aims to minimize potential losses.
 
@@ -168,15 +168,15 @@ Step 1: Initiating a withdrawal on L2
 
 2. The function does the following:
 
-   * Burns the transferred amount of tokens from the balance of the withdrawal’s initiator.
+   * Burns the transferred amount of tokens from the balance of the withdrawal's initiator.
 
-   * Sends a message to the relevant L1 bridge with the amount to be transferred and the recipient’s address.
+   * Sends a message to the relevant L1 bridge with the amount to be transferred and the recipient's address.
 
 Step 2: Proving the block that includes the withdrawal
 
 1. The sequencer completes the block construction
 
-2. Starknet’s provers prove the validity of the block and submit a state update to L1.
+2. Starknet's provers prove the validity of the block and submit a state update to L1.
 
 3. The message from the previous step is stored in the Starknet Core Contract.
 
@@ -185,5 +185,5 @@ Step 3: Transferring the funds on L1
 After the withdrawal message has been recorded on the Starknet Core Contract, anyone can finalize the transfer on L1 from the bridge back to the user, by calling the `withdraw` function.
 
 <Note>
-  This step is permissionless, anyone can do it. The recipient’s address is part of the recorded message on L1, so they receive the funds regardless of who calls the `withdraw` function on L1.
+  This step is permissionless, anyone can do it. The recipient's address is part of the recorded message on L1, so they receive the funds regardless of who calls the `withdraw` function on L1.
 </Note>

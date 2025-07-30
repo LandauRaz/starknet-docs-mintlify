@@ -11,7 +11,7 @@ A Starknet block is a list of transactions and a block header that contains [mul
 | Name                      | Type              | Description                                                                                                                                                                               |
 | ------------------------- | ----------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `block_number`            | `u64`             | The number of this block (i.e., its height)                                                                                                                                               |
-| `parent_block_hash`       | `felt252`         | The [hash](/architecture/blocks#block-hash) of the block’s parent                                                                                                                                             |
+| `parent_block_hash`       | `felt252`         | The [hash](/architecture/blocks#block-hash) of the block's parent                                                                                                                                             |
 | `global_state_root`       | `felt252`         | A [commitment](/architecture/state#state-commitment) to the new state                                                                                                                               |
 | `sequencer_address`       | `ContractAddress` | The Starknet address of the sequencer that created the block                                                                                                                              |
 | `block_timestamp`         | `Timestamp`       | The time at which the sequencer began building the block, in seconds since the Unix epoch                                                                                                 |
@@ -74,7 +74,7 @@ Where:
   where `h` is the [Poseidon hash function](/architecture/cryptography#poseidon-hash) and `l1_gas_price_wei`, `l1_gas_price_fri`, `l1_data_gas_price_wei`, `l1_data_gas_price_fri`, `l2_gas_price_wei`, and `l2_gas_price_fri` are the wei and fri denominated prices for the three resource types.
 
 <Tip>
-For a reference implementation, see [`block_hash_calculator.rs`](https://github.com/starkware-libs/sequencer/blob/bb361ec67396660d5468fd088171913e11482708/crates/starknet_api/src/block_hash/block_hash_calculator.rs#L68) in the Starknet sequencer’s GitHub repository
+For a reference implementation, see [`block_hash_calculator.rs`](https://github.com/starkware-libs/sequencer/blob/bb361ec67396660d5468fd088171913e11482708/crates/starknet_api/src/block_hash/block_hash_calculator.rs#L68) in the Starknet sequencer's GitHub repository
 </Tip>
 
 ## State diff commitment

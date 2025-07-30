@@ -11,7 +11,7 @@ For any questions or inquiries, reach out to us on [Telegram](https://t.me/+CLZl
 
 Welcome to the third installment of the *Become a Starknet validator* guide! ✅
 
-Starting from its second phase, the staking protocol also requires validators to prove they are actively preserving the history of the network by running a [Starknet full node](/ecosystem/overview/) and submitting attestations to randomly assigned blocks in each epoch. This installment of the series will therefore walk you though [running a Pathfinder node](/guides/becoming-a-validator/pathfinder#running-a-pathfinder-node) and [its attestation service](/guides/becoming-a-validator/pathfinder#running-pathfinder’s-attestation-service).
+Starting from its second phase, the staking protocol also requires validators to prove they are actively preserving the history of the network by running a [Starknet full node](/ecosystem/overview/) and submitting attestations to randomly assigned blocks in each epoch. This installment of the series will therefore walk you though [running a Pathfinder node](/guides/becoming-a-validator/pathfinder#running-a-pathfinder-node) and [its attestation service](/guides/becoming-a-validator/pathfinder#running-pathfinder's-attestation-service).
 
 <Note>
 To run a [Juno node](https://github.com/NethermindEth/juno) and [its attestation service](https://github.com/NethermindEth/starknet-staking-v2/tree/main?tab=readme-ov-file#starknet-staking-v2), see [the Juno documentation](https://juno.nethermind.io/).
@@ -21,11 +21,11 @@ To run a [Juno node](https://github.com/NethermindEth/juno) and [its attestation
 
 ### Downloading a snapshot
 
-Running a full node involves using your local machine’s storage to maintain a full database of the blockchain, all the way from the genesis block.
+Running a full node involves using your local machine's storage to maintain a full database of the blockchain, all the way from the genesis block.
 
-Database snapshots let you quickly start your node without having to download all blocks from the very beginning, and instead use a pre-made version of the database that’s already in sync up to a certain block.
+Database snapshots let you quickly start your node without having to download all blocks from the very beginning, and instead use a pre-made version of the database that's already in sync up to a certain block.
 
-To download Pathfinder’s snapshot, you first need to download the [rclone](https://rclone.org/) file manager by running:
+To download Pathfinder's snapshot, you first need to download the [rclone](https://rclone.org/) file manager by running:
 
 ```shell
 sudo -v ; curl https://rclone.org/install.sh | sudo bash
@@ -57,7 +57,7 @@ acl = private
 
 ```
 
-Next, create a new `$HOME/pathfinder` directory, navigate into it, and use rclone to copy [Pathfinder’s latest database snapshot](https://rpc.pathfinder.equilibrium.co/snapshots/latest) to your local directory by running:
+Next, create a new `$HOME/pathfinder` directory, navigate into it, and use rclone to copy [Pathfinder's latest database snapshot](https://rpc.pathfinder.equilibrium.co/snapshots/latest) to your local directory by running:
 
 ```shell
 mkdir $HOME/pathfinder
@@ -66,7 +66,7 @@ rclone copy -P pathfinder-snapshots:pathfinder-snapshots/<FILENAME> snapshot.sql
 
 ```
 
-Once the database snapshot is downloaded, compare the file’s checksum value with the one shown at [rpc.pathfinder.equilibrium.co/snapshots/latest](https://rpc.pathfinder.equilibrium.co/snapshots/latest) by running:
+Once the database snapshot is downloaded, compare the file's checksum value with the one shown at [rpc.pathfinder.equilibrium.co/snapshots/latest](https://rpc.pathfinder.equilibrium.co/snapshots/latest) by running:
 
 ```shell
 sha256sum snapshot.sqlite.zst
@@ -98,7 +98,7 @@ docker run \
 
 ```
 
-Once the docker container is up and running, you can check the docker image’s logs by running:
+Once the docker container is up and running, you can check the docker image's logs by running:
 
 ```shell
 docker logs -f pathfinder
@@ -117,16 +117,16 @@ If successful, the result should resemble the following:
 ```
 
 <Note>
-To stop the node’s execution, run:
+To stop the node's execution, run:
 
 ```shell
 docker stop pathfinder
 ```
 </Note>
 
-## Running Pathfinder’s attestation service
+## Running Pathfinder's attestation service
 
-Luckily, running [Pathfinder’s attestation service](https://github.com/eqlabs/starknet-validator-attestation/tree/main) is as simple as running:
+Luckily, running [Pathfinder's attestation service](https://github.com/eqlabs/starknet-validator-attestation/tree/main) is as simple as running:
 
 ```shell
 docker run -it --rm --network host \

@@ -4,11 +4,11 @@ title: "State"
 
 ## Overview
 
-Starknet’s state [is composed of contract classes and instances](#state_structure) and [tracks any changes to them](#state_transition). Its [commitment](#state_commitment) uses a cryptographic structure optimized for zero-knowledge proofs, enabling efficient proof generation of state updates and forming the backbone of Starknet’s scalability and security.
+Starknet's state [is composed of contract classes and instances](#state_structure) and [tracks any changes to them](#state_transition). Its [commitment](#state_commitment) uses a cryptographic structure optimized for zero-knowledge proofs, enabling efficient proof generation of state updates and forming the backbone of Starknet's scalability and security.
 
 ## State structure
 
-Starknet’s state consists of:
+Starknet's state consists of:
 
 * A mapping between the hashes of contract classes and their definitions
 
@@ -20,7 +20,7 @@ A contract instance state consists of:
 
 * A class hash, which defines the functionality of the contract
 
-* A key-value mapping (where the key and values are field elements), which comprises the contract’s storage
+* A key-value mapping (where the key and values are field elements), which comprises the contract's storage
 
 * A nonce, which tracks the number of transactions sent from this contract
 
@@ -36,7 +36,7 @@ Address `0x0` functions as the default `caller_address` for external calls, incl
 
 #### Address `0x1`
 
-Address `0x1` is another special contract address within Starknet’s architecture. It functions as a storage space for mapping block numbers to their corresponding block hashes. The storage structure at this address is organized as follows:
+Address `0x1` is another special contract address within Starknet's architecture. It functions as a storage space for mapping block numbers to their corresponding block hashes. The storage structure at this address is organized as follows:
 
 |                |                                                                                                                                   |
 | -------------- | --------------------------------------------------------------------------------------------------------------------------------- |
@@ -50,11 +50,11 @@ The storage organization of address `0x1` supports the efficient retrieval of bl
 
 A transaction $$t x$$ transitions the system from state $$S$$ to state $$S^{'}$$ if:
 
-* $$t x$$ is an `INVOKE` transaction, and the storage of $$S^{'}$$ is the result of executing the target contract code with respect to the previous state $$S$$. The arguments, contract instance’s address, and the specific function entry point are part of the transaction.
+* $$t x$$ is an `INVOKE` transaction, and the storage of $$S^{'}$$ is the result of executing the target contract code with respect to the previous state $$S$$. The arguments, contract instance's address, and the specific function entry point are part of the transaction.
 
-* $$t x$$ is a `DEPLOY_ACCOUNT` transaction, and $$S^{'}$$ contains the new contract instance’s state at the contract instance’s address. Additionally, the storage of $$S$$ is updated according to the execution of the contract instance’s constructor.
+* $$t x$$ is a `DEPLOY_ACCOUNT` transaction, and $$S^{'}$$ contains the new contract instance's state at the contract instance's address. Additionally, the storage of $$S$$ is updated according to the execution of the contract instance's constructor.
 
-* $$t x$$ is a `DECLARE` transaction, and $$S^{'}$$ contains the class hash and definition in the contract class’s mapping
+* $$t x$$ is a `DECLARE` transaction, and $$S^{'}$$ contains the class hash and definition in the contract class's mapping
 
 ## State commitment
 
@@ -82,7 +82,7 @@ Where:
 
 ### The contract trie
 
-As with Ethereum, this trie is a two-level structure, whose leaves correspond to distinct contracts. The address of each contract determines the path from the trie’s root to its corresponding leaf, whose content encodes the contract’s state.
+As with Ethereum, this trie is a two-level structure, whose leaves correspond to distinct contracts. The address of each contract determines the path from the trie's root to its corresponding leaf, whose content encodes the contract's state.
 
 The information stored in the leaf is as follows:
 
@@ -103,15 +103,15 @@ Where:
 
 * `hPed` is the [Pedersen](/architecture/cryptography/#hash-functions#pedersen_hash) hash function.
 
-* `class_hash` is the hash of [the contract’s definition](https://book.cairo-lang.org/ch100-01-contracts-classes-and-instances.html).
+* `class_hash` is the hash of [the contract's definition](https://book.cairo-lang.org/ch100-01-contracts-classes-and-instances.html).
 
-* `storage_root` is the root of another Merkle-Patricia trie of height 251 that is constructed from the contract’s storage.
+* `storage_root` is the root of another Merkle-Patricia trie of height 251 that is constructed from the contract's storage.
 
 * `nonce` is the current nonce of the contract.
 
 ### The class trie
 
-The class trie encodes the information about all existing [classes](https://book.cairo-lang.org/ch100-01-contracts-classes-and-instances.html) in Starknet’s state. This trie maps [class hashes](https://book.cairo-lang.org/ch100-01-contracts-classes-and-instances.html) to their compiled class hashes. The information stored in a leaf at a path corresponding to some class hash is as follows:
+The class trie encodes the information about all existing [classes](https://book.cairo-lang.org/ch100-01-contracts-classes-and-instances.html) in Starknet's state. This trie maps [class hashes](https://book.cairo-lang.org/ch100-01-contracts-classes-and-instances.html) to their compiled class hashes. The information stored in a leaf at a path corresponding to some class hash is as follows:
 
 ```text
 hPos(

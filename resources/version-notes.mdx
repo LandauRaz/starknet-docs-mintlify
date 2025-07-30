@@ -45,20 +45,20 @@ Starknet v0.13.6 is a configuration change done to support integration by the [S
 * Introducing builtin tracking and temporarily disabling Cairo Native: The [Starknet OS](/architecture/snos/) now tracks individual builtins usages, [capping the number of builtins that may fit inside each block](/resources/chain-info/#block_builtin_limits). Since [Cairo Native](https://github.com/lambdaclass/cairo_native) does currently not support this kind of tracking, its usage is temporarily disabled and will be enabled again once this capability is supported.
 
   <Note>
-    Cairo Native hasn’t yet been enabled on Mainnet, and disabling it only affects Sepolia.
+    Cairo Native hasn't yet been enabled on Mainnet, and disabling it only affects Sepolia.
   </Note>
 
 * Reducing maximum block size: The amount of L2 gas that a block can contain is [decreased from 5B to 4B L2 gas](/resources/chain-info/#current_limits).
 
 Additional resources
 
-* [*SN v0.13.6 pre-release notes* on Starknet’s community forum](https://community.starknet.io/t/sn-v0-13-6-pre-release-notes/115680)
+* [*SN v0.13.6 pre-release notes* on Starknet's community forum](https://community.starknet.io/t/sn-v0-13-6-pre-release-notes/115680)
 
-* [*Introducing SN 0.13.6* on Starknet’s community forum](https://community.starknet.io/t/introducing-sn-0-13-6/115678)
+* [*Introducing SN 0.13.6* on Starknet's community forum](https://community.starknet.io/t/introducing-sn-0-13-6/115678)
 
 ## Starknet v0.13.4 and v0.13.5 (Mar 24, 2025)
 
-Starknet v0.13.4 and v0.13.5 are live on Mainnet. All the big improvements came in v0.13.4, and the v0.13.5 upgrade rolled out immediately after, bringing minor adjustments to help the ecosystem gear up for Starknet’s next upgrade.
+Starknet v0.13.4 and v0.13.5 are live on Mainnet. All the big improvements came in v0.13.4, and the v0.13.5 upgrade rolled out immediately after, bringing minor adjustments to help the ecosystem gear up for Starknet's next upgrade.
 
 Starknet v0.13.4 includes the following changes:
 
@@ -200,7 +200,7 @@ In response to community feedback, Starknet 0.13.1.1 reduces class declaration f
 
 * **Cheaper data availability (DA):** Starknet uses [EIP-4844](https://eips.ethereum.org/EIPS/eip-4844). State diffs are now blobs, rather than calldata, requiring the addition of `data_gas` to the Starknet block header.
 
-* Time-related syscalls when called from an account contract’s `__validate__`, `__validate_deploy__`, `__validate_declare__`, or `constructor` function:
+* Time-related syscalls when called from an account contract's `__validate__`, `__validate_deploy__`, `__validate_declare__`, or `constructor` function:
 
   * `block_timestamp` returns the hour, rounded down.
 
@@ -249,7 +249,7 @@ A new version of `starknet_api_openrpc.json`, 0.7.0, accommodates the changes in
 * `overall_fee` is now:\
   `gas_consumed` × `gas_price` + `data_gas_consumed` × `data_gas_price`
 
-* Fee estimates will change depending on the data availability solution used by current Starknet blocks. For example, if you estimate the fee against the pending block, and it’s currently using `CALLDATA`, then nodes are expected to return `data_gas_consumed=0` and compute the fee similarly to today, that is, get higher estimates.
+* Fee estimates will change depending on the data availability solution used by current Starknet blocks. For example, if you estimate the fee against the pending block, and it's currently using `CALLDATA`, then nodes are expected to return `data_gas_consumed=0` and compute the fee similarly to today, that is, get higher estimates.
 
 Receipts and traces now include data availability resources
 
@@ -387,7 +387,7 @@ Starknet v0.12.0 is live on Mainnet.
 
 This version contains the following changes:
 
-* Use the [rust blockifier](https://github.com/starkware-libs/blockifier) and [LambdaClass’s Cairo VM](https://github.com/lambdaclass/cairo-vm) to accelerate the sequencer’s time to handle transactions.
+* Use the [rust blockifier](https://github.com/starkware-libs/blockifier) and [LambdaClass's Cairo VM](https://github.com/lambdaclass/cairo-vm) to accelerate the sequencer's time to handle transactions.
 
 * Support [version 2.0.0](https://github.com/starkware-libs/cairo/releases/tag/v2.0.0) of the Cairo compiler.
 
@@ -429,7 +429,7 @@ This version contains the following changes:
 
 * Add current block hash to the Starknet Core Contract (currently not verified by the Starknet OS):
 
-  * Breaking change: The `LogStateUpdate` event’s data is changed to include blockHash.
+  * Breaking change: The `LogStateUpdate` event's data is changed to include blockHash.
 
 ## Starknet v0.11.0 (Mar 29, 2023)
 
@@ -503,7 +503,7 @@ Cairo:
 
 ## Starknet v0.10.0 (Sep 5, 2022)
 
-This version introduces the next step in Starknet’s account abstraction design, specifically the validate/execute separation. See [here](https://www.notion.so/starkware/Starknet-0-10-0-4ac978234c384a30a195ce4070461257) for more information.
+This version introduces the next step in Starknet's account abstraction design, specifically the validate/execute separation. See [here](https://www.notion.so/starkware/Starknet-0-10-0-4ac978234c384a30a195ce4070461257) for more information.
 
 This version contains the following changes:
 
@@ -535,7 +535,7 @@ Starknet:
 
   * `declare` transaction should now be sent from an account (and is validated using `validate_declare` in the account contract)
 
-    * Support fee for sending L1 messages. At this point, it’s not mandatory and messages with no fee will still be handled. Starting from the next version it will become mandatory.
+    * Support fee for sending L1 messages. At this point, it's not mandatory and messages with no fee will still be handled. Starting from the next version it will become mandatory.
 
 Cairo:
 
@@ -559,7 +559,7 @@ Syntax changes in Cairo (to make it more similar to rust and C++):
 
 * Use ``…, ap` instead of `...; ap`` in low level Cairo code
 
-* Support return types that are not tuples. For example, `func foo() → felt` (instead of `func foo() → (r: felt)`) As a result, it’s now mandatory to specify return types. `func foo() → (res)` should be replaced by `func foo() → (res: felt)`. The cairo-migrate tool does that automatically.
+* Support return types that are not tuples. For example, `func foo() → felt` (instead of `func foo() → (r: felt)`) As a result, it's now mandatory to specify return types. `func foo() → (res)` should be replaced by `func foo() → (res: felt)`. The cairo-migrate tool does that automatically.
 
 * Return statement accepts expressions, rather than only tuples. For example, you can write `let x = (5,); return x;`
 
@@ -641,7 +641,7 @@ Starknet:
 
 * Rename `ContractDefinition` to `ContractClass`
 
-* Reduce the compiled contract file’s size by removing unnecessary identifiers (this optimization can be disabled using `--dont_filter_identifiers`)
+* Reduce the compiled contract file's size by removing unnecessary identifiers (this optimization can be disabled using `--dont_filter_identifiers`)
 
 Cairo:
 
@@ -649,4 +649,4 @@ Cairo:
 
 * Add additional helper methods to `blake2s.cairo`, including big-endian support
 
-Technical changes: \* Change function’s `return` type from a struct to a named tuple. In particular, `foo.Return.SIZE` is no longer supported.
+Technical changes: \* Change function's `return` type from a struct to a named tuple. In particular, `foo.Return.SIZE` is no longer supported.

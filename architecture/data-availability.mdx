@@ -4,7 +4,7 @@ title: "Data availability"
 
 ## Overview
 
-Starknet is a Validity Rollup, which means that after consolidating and proving a set of changes to Starknet’s state, it updates the latest proven state on Ethereum. Alongside the proof, it sends the [formatted](#state_diff_format) difference between the previous and new states, also known as *state diff*, allowing anyone monitoring Ethereum to use this data and reconstruct Starknet’s current state.
+Starknet is a Validity Rollup, which means that after consolidating and proving a set of changes to Starknet's state, it updates the latest proven state on Ethereum. Alongside the proof, it sends the [formatted](#state_diff_format) difference between the previous and new states, also known as *state diff*, allowing anyone monitoring Ethereum to use this data and reconstruct Starknet's current state.
 
 ## State diff format
 
@@ -83,7 +83,7 @@ In Starknet version 0.11.0, state diffs changed to contain information on every 
     \underset{\text{64 bits}}{\underbrace{\#\text{ of storage updates}}}_{\text{LSB}}
     $$
 
-    where the class information flag’s value is `1` if the contract was deployed or replaced and `0` otherwise (i.e., there were only storage updates). When set to `1`, the new class hash occupies the next entry in the array
+    where the class information flag's value is `1` if the contract was deployed or replaced and `0` otherwise (i.e., there were only storage updates). When set to `1`, the new class hash occupies the next entry in the array
 
   * The key and new value for each storage update
 
@@ -111,7 +111,7 @@ This format is demonstrated by the following example:
 2. The address of the first, and only, contract whose storage changed                                                                                                                                                                                                                                                                                                                                                                                                                                     
 3. The 32-byte word that encodes the updated nonce and meta information about the storage updates of the first, and only, contract whose storage was updated, which equals $$2^{64} + 1 = 0^{127} \left|\right. 0 \left|\right. 0^{63} 1 \left|\right. 0^{63} 1$$ and therefore:- One storage cell was update
     - The new nonce is `1`
-    - The class information flag is `0`, which means that the contract was not deployed or replaced and therefore the next word shouldn’t be treated as the class hash
+    - The class information flag is `0`, which means that the contract was not deployed or replaced and therefore the next word shouldn't be treated as the class hash
 4. The key of the first, and only, storage update of the first, and only, contract whose storage was updated                                                                                                                                                                                                                                                                                                                                                                                              
 5. The new value of the first and only storage update of the first and only contract whose storage was updated These two elements, `100` and `200`, encode the storage update, where the value of key `100` is set to `200`.                                                                                                                                                                                                                                                                          
 6. The number of classes that were declared                                                                                                                                                                                                                                                                                                                                                                                                                                                               
@@ -126,7 +126,7 @@ In Starknet version 0.13.1, sending state diffs to Ethereum changed from using c
 See [Data availability with EIP-4844](https://community.starknet.io/t/data-availability-with-eip4844/) on the Starknet Community Forum or review [an example blob published on Ethereum by the Starknet sequencer](https://etherscan.io/tx/0x8a227491bc78424c2cac1b203c95cdd99ede5112d41f0e7eab26f3c8aa9c658d/) for more details.
 </Tip>
 
-The format for state diffs remains the same as in version 0.11.0, but the data sent to Ethereum changed to a Fast Fourier Transform (FFT) of the original data. To recover Starknet’s state diff based on blobs or calldata published onchain, an Inverse Fast Fourier Transform (IFFT) on the data must first be performed, afterwhich decoding can proceed as usual.
+The format for state diffs remains the same as in version 0.11.0, but the data sent to Ethereum changed to a Fast Fourier Transform (FFT) of the original data. To recover Starknet's state diff based on blobs or calldata published onchain, an Inverse Fast Fourier Transform (IFFT) on the data must first be performed, afterwhich decoding can proceed as usual.
 
 ### v0.13.3
 
@@ -177,7 +177,7 @@ where:
 * If the nonce of the contract is unchanged, the value of the new nonce is zero
 
   <Note>
-  This definition can slightly deviate from the previous semantics, if an account contract was modified externally (e.g., via `execute_from_outside`). In this case, the contract’s nonce is unchanged, yet it appears in the state update (since its storage was updated). Pre-v0.13.3, the current nonce of the account would have appeared although it is unchanged, while in v0.13.3 the value of new nonce is zero. This change helps with making the encoding derivable solely from the state diff itself, without referring to the global state of the chain.
+  This definition can slightly deviate from the previous semantics, if an account contract was modified externally (e.g., via `execute_from_outside`). In this case, the contract's nonce is unchanged, yet it appears in the state update (since its storage was updated). Pre-v0.13.3, the current nonce of the account would have appeared although it is unchanged, while in v0.13.3 the value of new nonce is zero. This change helps with making the encoding derivable solely from the state diff itself, without referring to the global state of the chain.
   </Note>
 
 ### v0.13.4

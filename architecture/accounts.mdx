@@ -4,11 +4,11 @@ title: "Accounts"
 
 ## Overview
 
-Accounts represent users onchain, and enable them to interact with the blockchain. [Unlike Ethereum](/architecture/accounts#ethereum’s-account-structure), Starknet facilitates account abstraction natively, via its unique account [structure](/architecture/accounts#starknet’s-account-structure) and [nonce management](/architecture/accounts#account-nonces). Accounts can be [easily deployed on Starknet](/architecture/accounts#deploying-a-new-account), both with or without having a preexisting account.
+Accounts represent users onchain, and enable them to interact with the blockchain. [Unlike Ethereum](/architecture/accounts#ethereum's-account-structure), Starknet facilitates account abstraction natively, via its unique account [structure](/architecture/accounts#starknet's-account-structure) and [nonce management](/architecture/accounts#account-nonces). Accounts can be [easily deployed on Starknet](/architecture/accounts#deploying-a-new-account), both with or without having a preexisting account.
 
-## Ethereum’s account structure
+## Ethereum's account structure
 
-Within Ethereum individual user accounts are known as Externally Owned Accounts (EOAs). EOAs differ from smart contracts in that EOAs are not controlled by code, but rather by a pair of private and public keys. The account’s address is derived from those keys, and only by possessing the private key can you initiate transactions from an account. While simple, because the signature scheme is fixed, EOAs have some drawbacks, including the following:
+Within Ethereum individual user accounts are known as Externally Owned Accounts (EOAs). EOAs differ from smart contracts in that EOAs are not controlled by code, but rather by a pair of private and public keys. The account's address is derived from those keys, and only by possessing the private key can you initiate transactions from an account. While simple, because the signature scheme is fixed, EOAs have some drawbacks, including the following:
 
 * Control over the private key gives complete control over the account, so you must keep your seed phrase secure yet accessible.
 
@@ -30,34 +30,34 @@ Two prominent examples of how account abstraction might be used to program accou
 
 * **Social recovery:** retrieving your wallet if in case its lost via a selected social network, vastly improving the typical experience of wallet recovery
 
-* **Operating your account via facial recognition:** Using your phone’s native hardware to sign transactions, making it practically impossible to take control of another user’s account, even if your phone is stolen
+* **Operating your account via facial recognition:** Using your phone's native hardware to sign transactions, making it practically impossible to take control of another user's account, even if your phone is stolen
 
-## Starknet’s account structure
+## Starknet's account structure
 
-Starknet’s account structure is inspired by Ethereum’s EIP-4337 where smart contract accounts with arbitrary verification logic are used instead of EOAs.
+Starknet's account structure is inspired by Ethereum's EIP-4337 where smart contract accounts with arbitrary verification logic are used instead of EOAs.
 
 A valid account contract in Starknet is simply a contract that includes the following functions:
 
 | Function name          | When required   |
 | ---------------------- | --------------- |
 | `__validate__`         | Always required |
-| `__execute__`          | Always required. The signatures of `__validate__` and `__execute__` must be identical. <Danger>Two critical validations must happen in `__execute__`, and their absence can lead to draining of the account’s funds:<br/><br/>(1) `assert!(get\_caller\_address().is\_zero())`<br/><br/>This asserts that the account’s \_\_execute\_\_ is not called from another contract, thus skipping validations (in later versions we may disallow calling \_\_execute\_\_ from another contract at the protocol level)<br/><br/>(2) `assert!(get\_tx\_info().unbox().version.into() >= 1\_u32)`<br/><br/>This asserts that the transaction’s version is at least 1, preventing the account from accepting INVOKE v0 transactions. It is critical to explicitly disallow the deprecated v0 transaction type, as v0 transactions assume that the signature verification happens in \_\_execute\_\_, and are thus skipping \_\_validate\_\_ entirely.</Danger> |
+| `__execute__`          | Always required. The signatures of `__validate__` and `__execute__` must be identical. <Danger>Two critical validations must happen in `__execute__`, and their absence can lead to draining of the account's funds:<br/><br/>(1) `assert!(get\_caller\_address().is\_zero())`<br/><br/>This asserts that the account's \_\_execute\_\_ is not called from another contract, thus skipping validations (in later versions we may disallow calling \_\_execute\_\_ from another contract at the protocol level)<br/><br/>(2) `assert!(get\_tx\_info().unbox().version.into() >= 1\_u32)`<br/><br/>This asserts that the transaction's version is at least 1, preventing the account from accepting INVOKE v0 transactions. It is critical to explicitly disallow the deprecated v0 transaction type, as v0 transactions assume that the signature verification happens in \_\_execute\_\_, and are thus skipping \_\_validate\_\_ entirely.</Danger> |
 | `__validate_declare__` | Required for the account to be able to send a `DECLARE` transaction. This function must receive exactly one argument, which is the class hash of the declared class. |
-| `__validate_deploy__`  | Required to allow deploying an instance of the account contract with a `DEPLOY_ACCOUNT` transaction. The arguments of `__validate_deploy__` must be the class hash of the account to be deployed and the salt used for computing the account’s contract address, followed by the constructor arguments. <Note>You can only use the \_\_validate\_deploy\_\_ function in an account contract to validate the DEPLOY\_ACCOUNT transaction for that same contract. That is, this function runs at most once throughout the lifecycle of the account.</Note> |
+| `__validate_deploy__`  | Required to allow deploying an instance of the account contract with a `DEPLOY_ACCOUNT` transaction. The arguments of `__validate_deploy__` must be the class hash of the account to be deployed and the salt used for computing the account's contract address, followed by the constructor arguments. <Note>You can only use the \_\_validate\_deploy\_\_ function in an account contract to validate the DEPLOY\_ACCOUNT transaction for that same contract. That is, this function runs at most once throughout the lifecycle of the account.</Note> |
 | `constructor`          | All contracts have a `constructor` function. It can be explicitly defined in the contract, or if not explicitly defined, the sequencer uses a default `constructor` function, which is empty. |
 
 ### Flow
 
-When the sequencer receives a transaction, it calls the corresponding function with the appropriate input from the transaction’s data, as follows:
+When the sequencer receives a transaction, it calls the corresponding function with the appropriate input from the transaction's data, as follows:
 
 * For a `DECLARE` transaction, the sequencer validates the transaction by calling the `__validate_declare__` function.
 
-* For an `INVOKE` transaction, the sequencer calls the `__validate__` function with the transaction’s calldata as input, after being deserialized to the arguments in the `__validate__` function’s signature. After successfully completing validation, the sequencer calls the `__execute__` function with the same arguments.
+* For an `INVOKE` transaction, the sequencer calls the `__validate__` function with the transaction's calldata as input, after being deserialized to the arguments in the `__validate__` function's signature. After successfully completing validation, the sequencer calls the `__execute__` function with the same arguments.
 
-* For a `DEPLOY_ACCOUNT` transaction, the sequencer calls the `constructor` function with the transaction’s `constructor_calldata` as input, after being deserialized to the arguments in the constructor signature. After the successful execution of the constructor, the sequencer validates the transaction by calling the `__validate_deploy__` function.
+* For a `DEPLOY_ACCOUNT` transaction, the sequencer calls the `constructor` function with the transaction's `constructor_calldata` as input, after being deserialized to the arguments in the constructor signature. After the successful execution of the constructor, the sequencer validates the transaction by calling the `__validate_deploy__` function.
 
 <Warning>
-For an `INVOKE` and `DEPLOY_ACCOUNT` transactions, it is up to the sender to make sure that the calldata is serializied correctly according to either the `__validate__` or `constructor` function’s signature.
+For an `INVOKE` and `DEPLOY_ACCOUNT` transactions, it is up to the sender to make sure that the calldata is serializied correctly according to either the `__validate__` or `constructor` function's signature.
 </Warning>
 
 <Note>
@@ -67,7 +67,7 @@ Separating the validation and execution stages guarantees payment to sequencers 
 <Tip>
 For more information on transaction types and lifecycle, see [Transactions](/architecture/transactions/).
 
-For more information on the each transaction’s fields, see [Transaction fields and hash calculations reference](/resources/transactions-reference/).
+For more information on the each transaction's fields, see [Transaction fields and hash calculations reference](/resources/transactions-reference/).
 </Tip>
 
 ### Limitations
@@ -121,13 +121,13 @@ These limitations are designed to prevent the following DoS attacks on the seque
 
   2. The sequencer is ready to execute them, thinking that by the time it includes them in a block, they will still be valid.
 
-  3. Shortly after the transactions are sent, the attacker sends one transaction that somehow invalidates all the previous ones and makes sure it’s included in a block, e.g. by offering higher fees for this one transaction. An example of such an attack is having the implementation of `__validate__` checks that the value of a storage slot is `1`, and the attacker’s transaction later sets it to `0`. Restricting validation functions from calling external contracts prevents this attack.
+  3. Shortly after the transactions are sent, the attacker sends one transaction that somehow invalidates all the previous ones and makes sure it's included in a block, e.g. by offering higher fees for this one transaction. An example of such an attack is having the implementation of `__validate__` checks that the value of a storage slot is `1`, and the attacker's transaction later sets it to `0`. Restricting validation functions from calling external contracts prevents this attack.
 
 ### Failures
 
-When the `__validate__`, `__validate_deploy__`, or `__validate_declare__` functions fail, the account in question does not pay any fee, and the transaction’s status is `REJECTED`.
+When the `__validate__`, `__validate_deploy__`, or `__validate_declare__` functions fail, the account in question does not pay any fee, and the transaction's status is `REJECTED`.
 
-When the `__execute__` function fails, the transaction’s status is `REVERTED`. Similar to Ethereum, a reverted transaction is included in a block, and the sequencer is eligible to charge a fee for the work done up to the point of failure.
+When the `__execute__` function fails, the transaction's status is `REVERTED`. Similar to Ethereum, a reverted transaction is included in a block, and the sequencer is eligible to charge a fee for the work done up to the point of failure.
 
 <Tip>
 To learn more about transaction statuses, see [Transactions](/architecture/transactions#transaction_statuses).
@@ -139,7 +139,7 @@ While not mandatory at the protocol level, you can use a richer standard interfa
 
 ### Example
 
-Thanks to account abstraction, the logic of `__execute__` and the different validation functions is up to the party implementing the account. To review a concrete implementation, you can check out OpenZeppelin’s [account component](https://github.com/OpenZeppelin/cairo-contracts/blob/v0.14.0/src/account/account.cairo#L72), which also adheres to [SNIP6](/architecture/accounts#snip-6).
+Thanks to account abstraction, the logic of `__execute__` and the different validation functions is up to the party implementing the account. To review a concrete implementation, you can check out OpenZeppelin's [account component](https://github.com/OpenZeppelin/cairo-contracts/blob/v0.14.0/src/account/account.cairo#L72), which also adheres to [SNIP6](/architecture/accounts#snip-6).
 
 ## Account nonces
 
@@ -151,7 +151,7 @@ Similar to Ethereum, every contract in Starknet, including account contracts, ha
 
 Also similarly to Ethereum, Starknet currently determines the nonce structure at the protocol level to be sequential (i.e., the nonce of a transaction sent from an account is incremented by one after the transaction is executed). In the future, Starknet will consider a more flexible design, extending account abstraction to nonce abstraction.
 
-However, unlike Ethereum, only the nonce of account contracts — that is, those adhering to [Starknet’s account structure](/architecture/accounts#starknet’s-account-structure) — can be non-zero in Starknet. In contrast, in Ethereum, regular smart contracts can also increment their nonce by deploying smart contracts (i.e., executing the `CREATE` and `CREATE2` opcodes).
+However, unlike Ethereum, only the nonce of account contracts — that is, those adhering to [Starknet's account structure](/architecture/accounts#starknet's-account-structure) — can be non-zero in Starknet. In contrast, in Ethereum, regular smart contracts can also increment their nonce by deploying smart contracts (i.e., executing the `CREATE` and `CREATE2` opcodes).
 
 ## Deploying a new account
 
@@ -167,17 +167,17 @@ Upon receiving one of these transactions, the sequencer performs the following s
 
    * When deploying with the `DEPLOY_ACCOUNT` transaction type, the sequencer executes the `__validate_deploy__` function in the deployed contract.
 
-   * When deploying using the UDC, the sequencer executes the `__validate__` function in the contract of the sender’s address.
+   * When deploying using the UDC, the sequencer executes the `__validate__` function in the contract of the sender's address.
 
 2. Executes the constructor with the given arguments.
 
 3. Charges fees from the new account address.
 
   <Note>
-  If you use a `DEPLOY_ACCOUNT` transaction, the fees are paid from the address of the deployed account. If you use the UDC, which requires an `INVOKE` transaction, the fees are paid from the sender’s account. For information on the differences between V1 and V3 `INVOKE` transactions, see [`INVOKE` transaction](/architecture/transactions#transaction_types) in *Transaction types*.
+  If you use a `DEPLOY_ACCOUNT` transaction, the fees are paid from the address of the deployed account. If you use the UDC, which requires an `INVOKE` transaction, the fees are paid from the sender's account. For information on the differences between V1 and V3 `INVOKE` transactions, see [`INVOKE` transaction](/architecture/transactions#transaction_types) in *Transaction types*.
   </Note>
 
-4. Sets the account’s nonce as follows:
+4. Sets the account's nonce as follows:
 
    * `1`, when deployed with a `DEPLOY_ACCOUNT` transaction
 

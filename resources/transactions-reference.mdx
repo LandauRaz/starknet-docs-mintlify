@@ -21,7 +21,7 @@ sidebarTitle: "Transaction fields and hash calculations"
 | `resource_bounds`              | `Dict[Resource, ResourceBounds]` | Used for enabling the fee market.<br/><br/>A dictionary that maps resource type to resource bounds. The existing resources are L1 gas, L1 data gas, and L2 gas.<br/><br/> ***Resource***<br/><br/>A felt. Possible values are the felt representation of the strings `L1_GAS`, `L1_DATA`, or `L2_GAS`.<br/><br/>***ResourceBounds***<br/><br/>A struct containing the following felts:<br/><br/>• `max_amount`: The maximum amount of the resource allowed for usage during the execution.<br/><br/>• `max_price_per_unit`: The maximum price the user is willing to pay for the resource. Prices are denominated in fri, where 1 fri = 10<sup>-18</sup> STRK. |
 | `signature`                    | `List<FieldElement>`             | Additional information given by the sender, used to validate the transaction. For more information, see [Signature](#signature).                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
 | `tip`                          | `FieldElement`                   | For future use. Currently this value is always `0`.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
-| `version`                      | `FieldElement`                   | The transaction’s version. When the fields that comprise a transaction change, either with the addition of a new field or the removal of an existing field, then the transaction version increases.<br/><br/>Transaction version, where `n` specifies version `n` transaction. For example:<br/><br/>3 version 3 transaction                                                                                                                                                                                                                                                                          |
+| `version`                      | `FieldElement`                   | The transaction's version. When the fields that comprise a transaction change, either with the addition of a new field or the removal of an existing field, then the transaction version increases.<br/><br/>Transaction version, where `n` specifies version `n` transaction. For example:<br/><br/>3 version 3 transaction                                                                                                                                                                                                                                                                          |
 
 ### Hash calculation
 
@@ -92,7 +92,7 @@ The `DECLARE` transaction introduces new contract classes into the state of Star
 | `sender_address`               | `FieldElement`                   | The address of the account initiating the transaction.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
 | `signature`                    | `List<FieldElement>`             | Additional information given by the sender, used to validate the transaction. For more information, see [Signature](#signature).                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
 | `tip`                          | `FieldElement`                   | For future use. Currently this value is always `0`.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
-| `version`                      | `FieldElement`                   | The transaction’s version.<br/>When the fields that comprise a transaction change, either with the addition of a new field or the removal of an existing field, then the transaction version increases.<br/><br/>Transaction version, where `n` specifies version `n` transaction. For example:<br/><br/>3 version 3 transaction                                                                                                                                                                                                                                                                          |
+| `version`                      | `FieldElement`                   | The transaction's version.<br/>When the fields that comprise a transaction change, either with the addition of a new field or the removal of an existing field, then the transaction version increases.<br/><br/>Transaction version, where `n` specifies version `n` transaction. For example:<br/><br/>3 version 3 transaction                                                                                                                                                                                                                                                                          |
 
 ### Hash calculation
 
@@ -173,7 +173,7 @@ For more information, see [Deploying a new account](/architecture/accounts/#depl
 | `sender_address`               | `FieldElement`                   | The address of the account initiating the transaction.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
 | `signature`                    | `List<FieldElement>`             | Additional information given by the sender, used to validate the transaction. For more information, see [Signature](#signature).                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
 | `tip`                          | `FieldElement`                   | For future use. Currently this value is always `0`.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
-| `version`                      | `FieldElement`                   | The transaction’s version.<br/>When the fields that comprise a transaction change, either with the addition of a new field or the removal of an existing field, then the transaction version increases.Transaction version, where `n` specifies version `n` transaction. For example:<br/>3 version 3 transaction                                                                                                                                                                                                                                                                          |
+| `version`                      | `FieldElement`                   | The transaction's version.<br/>When the fields that comprise a transaction change, either with the addition of a new field or the removal of an existing field, then the transaction version increases.Transaction version, where `n` specifies version `n` transaction. For example:<br/>3 version 3 transaction                                                                                                                                                                                                                                                                          |
 
 ### Hash calculation
 
@@ -243,8 +243,8 @@ chain_id = int.from_bytes(value, byteorder="big", signed=False)
 
 The following constants are currently used. They correspond to the chain IDs that Starknet currently supports:
 
-* `SN_MAIN` for Starknet’s main network.
-* `SN_SEPOLIA` for Starknet’s public testnet on Sepolia.
+* `SN_MAIN` for Starknet's main network.
+* `SN_SEPOLIA` for Starknet's public testnet on Sepolia.
 
 ## Legacy information
 
@@ -259,7 +259,7 @@ The following constants are currently used. They correspond to the chain IDs tha
 | `signature`      | `List<FieldElement>` | Additional information given by the sender, used to validate the transaction. For more information, see [Signature](#signature).                                                                                    |
 | `max_fee`        | `FieldElement`       | The maximum fee that the sender is willing to pay for the transaction                                                                                                                                               |
 | `nonce`          | `FieldElement`       | The transaction nonce.                                                                                                                                                                                              |
-| `version`        | `FieldElement`       | The transaction’s version.<br/>The value is 1. When the fields that comprise a transaction change, either with the addition of a new field or the removal of an existing field, then the transaction version increases. |
+| `version`        | `FieldElement`       | The transaction's version.<br/>The value is 1. When the fields that comprise a transaction change, either with the addition of a new field or the removal of an existing field, then the transaction version increases. |
 
 #### Hash calculation
 
@@ -322,7 +322,7 @@ Where:
 | `signature`           | `List<FieldElement>` | Additional information given by the sender, used to validate the transaction. For more information, see [Signature](#signature).                                                                                    |
 | `max_fee`             | `FieldElement`       | The maximum fee that the sender is willing to pay for the transaction.                                                                                                                                              |
 | `nonce`               | `FieldElement`       | The transaction nonce.                                                                                                                                                                                              |
-| `version`             | `FieldElement`       | The transaction’s version.<br/>The value is 2. When the fields that comprise a transaction change, either with the addition of a new field or the removal of an existing field, then the transaction version increases. |
+| `version`             | `FieldElement`       | The transaction's version.<br/>The value is 2. When the fields that comprise a transaction change, either with the addition of a new field or the removal of an existing field, then the transaction version increases. |
 
 #### Hash calculation
 
@@ -363,7 +363,7 @@ Where:
 | `max_fee`        | `FieldElement`       | The maximum fee that the sender is willing to pay for the transaction.                                                                                                                                                          |
 | `signature`      | `List<FieldElement>` | Additional information given by the sender, used to validate the transaction. For more information, see [Signature](#signature).                                                                                                |
 | `nonce`          | `FieldElement`       | The transaction nonce.                                                                                                                                                                                                          |
-| `version`        | `FieldElement`       | The transaction’s version. Possible values are 1 or 0.<br/>When the fields that comprise a transaction change, either with the addition of a new field or the removal of an existing field, then the transaction version increases. |
+| `version`        | `FieldElement`       | The transaction's version. Possible values are 1 or 0.<br/>When the fields that comprise a transaction change, either with the addition of a new field or the removal of an existing field, then the transaction version increases. |
 
 #### Hash calculation
 
@@ -433,7 +433,7 @@ Where:
 | `signature`             | `List<FieldElement>` | Additional information given by the sender, used to validate the transaction. For more information, see [Signature](#signature).                      |
 | `max_fee`               | `FieldElement`       | The maximum fee that the sender is willing to pay for the transaction                                                                                 |
 | `nonce`                 | `FieldElement`       | The transaction nonce.                                                                                                                                |
-| `version`               | `FieldElement`       | The transaction’s version. The value is 1.                                                                                                            |
+| `version`               | `FieldElement`       | The transaction's version. The value is 1.                                                                                                            |
 
 #### Hash calculation
 
@@ -466,7 +466,7 @@ Where:
 
 If you need to retrieve the hash of an existing `DEPLOY` transaction, you can use this information to calculate the hash of the transaction.
 
-Before you can calculate the transaction hash, get the deployed contract address. The `DEPLOY` transaction’s hash is calculated as shown in the following pseudo code:
+Before you can calculate the transaction hash, get the deployed contract address. The `DEPLOY` transaction's hash is calculated as shown in the following pseudo code:
 
 ```txt
 deploy_tx_hash = h(

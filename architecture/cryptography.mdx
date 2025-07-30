@@ -28,7 +28,7 @@ where:
 
 * $$\beta$$ = 3141592653589793238462643383279502884197169399375105820974944592307816406665
 
-The curve’s order is 3618502788666131213697322783095070105526743751716087489154079457884512865583, and the generator point $$G$$ in the Elliptic Curve Digital Signature Algorithm (ECDSA) implementation that is used in Cairo with respect to it is defined by:
+The curve's order is 3618502788666131213697322783095070105526743751716087489154079457884512865583, and the generator point $$G$$ in the Elliptic Curve Digital Signature Algorithm (ECDSA) implementation that is used in Cairo with respect to it is defined by:
 
 * $$G_{x}$$ = 874739451078007766457464989774322083649278607533249481151382481072868806602
 
@@ -40,15 +40,15 @@ The STARK curve is commonly used in smart contracts, but is not distinguished by
 
 ## Hash functions
 
-There are three hash functions used throughout Starknet’s specifications that map inputs to elements in the [STARK field](/architecture/cryptography#the-stark-field).
+There are three hash functions used throughout Starknet's specifications that map inputs to elements in the [STARK field](/architecture/cryptography#the-stark-field).
 
 ### Starknet Keccak
 
-Starknet’s version of the Keccak hash function, commonly denoted by $$\text{sn}_\text{keccak}$$, is defined as the first 250 bits of Ethereum’s [keccak256](https://github.com/ethereum/eth-hash).
+Starknet's version of the Keccak hash function, commonly denoted by $$\text{sn}_\text{keccak}$$, is defined as the first 250 bits of Ethereum's [keccak256](https://github.com/ethereum/eth-hash).
 
 ### Pedersen hash
 
-Starknet’s version of the Pedersen hash function is then defined by:
+Starknet's version of the Pedersen hash function is then defined by:
 
 $$h \left(\right. a , b \left.\right) = \left(\left[\right. \text{shift}_\text{point} + a_{l o w} \cdot P_{0} + a_{h i g h} \cdot P 1 + b_{l o w} \cdot P 2 + b_{h i g h} \cdot P 3 \left]\right.\right)_{x}$$
 
@@ -74,7 +74,7 @@ $$h \left(\right. . . . h \left(\right. h \left(\right. 0 , a_{1} \left.\right) 
 Poseidon is a family of hash functions designed to be very efficient as algebraic circuits. As such, they can be very useful in ZK-proving systems such as STARKs.
 </Tip>
 
-Starknet’s version of the Poseidon hash function is based on a three-element state Hades permutation and defined of up to 2 elements by:
+Starknet's version of the Poseidon hash function is based on a three-element state Hades permutation and defined of up to 2 elements by:
 
 $$\text{poseidon} \left(\right. x \left.\right) := \left(\left[\right. \text{hades}_\text{permutation} \left(\right. x , 0 , 1 \left.\right) \left]\right.\right)_{0}$$
 
@@ -84,7 +84,7 @@ Where $$\left[\right. \cdot \left]\right._{j}$$ denotes taking the $$j$$'th coor
 
 #### Array hashing
 
-Let $$\text{hades} : \mathbb{F}_{P}^{3} \rightarrow \mathbb{F}_{P}^{3}$$ denote the Hades permutation with Starknet’s parameters, then given an array $$a_{1} , . . . , a_{n}$$ of $$n$$ field elements we define $$\text{poseidon} \left(\right. a_{1} , . . . , a_{n} \left.\right)$$ to be the first coordinate of $$H \left(\right. a_{1} , . . . , a_{n} ; 0 , 0 , 0 \left.\right)$$, where:
+Let $$\text{hades} : \mathbb{F}_{P}^{3} \rightarrow \mathbb{F}_{P}^{3}$$ denote the Hades permutation with Starknet's parameters, then given an array $$a_{1} , . . . , a_{n}$$ of $$n$$ field elements we define $$\text{poseidon} \left(\right. a_{1} , . . . , a_{n} \left.\right)$$ to be the first coordinate of $$H \left(\right. a_{1} , . . . , a_{n} ; 0 , 0 , 0 \left.\right)$$, where:
 
 $$
 H(a_1, \ldots, a_n; s_1, s_2, s_3) =

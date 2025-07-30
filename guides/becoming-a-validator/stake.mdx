@@ -11,7 +11,7 @@ For any questions or inquiries, reach out to us on [Telegram](https://t.me/+CLZl
 
 Welcome to the second installment of the *Become a Starknet validator* guide! ✅
 
-To become a validator, you must stake least the minimum required amount of STRK tokens by locking them into Starknet’s Staking contract, subsequentially earning rewards based on your participation. This installment of the guide will therefore walk you through [approving a transfer of STRK tokens to the Staking contract](#approving_strk_transfer), [locking them into it](#locking_strk), and [verifying that the procedure was successful](#verifying_stakes).
+To become a validator, you must stake least the minimum required amount of STRK tokens by locking them into Starknet's Staking contract, subsequentially earning rewards based on your participation. This installment of the guide will therefore walk you through [approving a transfer of STRK tokens to the Staking contract](#approving_strk_transfer), [locking them into it](#locking_strk), and [verifying that the procedure was successful](#verifying_stakes).
 
 <Tip>
 The steps in this installment are demonstrated on Sepolia.For the equivalent addresses on Mainnet, see [Chain information](/resources/chain-info#important-addresses).
@@ -25,9 +25,9 @@ To lock STRK token into the Staking contract, you first need to approve the tran
 To understand the role of the staking address, read more about [validator addresses in the staking protocol](/architecture/staking#addresses).
 </Note>
 
-To do so, use your staking address to invoke the STRK token contract’s `approve` function with the following parameters:
+To do so, use your staking address to invoke the STRK token contract's `approve` function with the following parameters:
 
-1. The Staking contract’s address
+1. The Staking contract's address
 
 2. The number of STRK tokens to stake
 
@@ -46,12 +46,12 @@ sncast --account=staker invoke \
 
 ```
 
-1. The STRK contract’s address on Sepolia
-2. The Staking contract’s address on Sepolia and 1 STRK (STRK has 18 decimals)
+1. The STRK contract's address on Sepolia
+2. The Staking contract's address on Sepolia and 1 STRK (STRK has 18 decimals)
 
 ## Locking STRK
 
-Once the transfer is approved, you can lock your STRK tokens into the Staking contract by using your staking address to invoke the Staking contract’s `stake` function with the following parameters:
+Once the transfer is approved, you can lock your STRK tokens into the Staking contract by using your staking address to invoke the Staking contract's `stake` function with the following parameters:
 
 1. The address to set as your rewards address
 
@@ -80,7 +80,7 @@ sncast --account=staker invoke \
 
 ```
 
-1. The Staking contract’s address on Sepolia
+1. The Staking contract's address on Sepolia
 2. 1 staked STRK (STRK has 18 decimals), delegation pooling enabled, and 100/10,000 = 1% commission
 
 The `stake` function does the following:
@@ -95,7 +95,7 @@ The `stake` function does the following:
 
 ## Verifying stakes
 
-To verify that your STRK token have been successfully staked, you can call the Staking contract’s `get_staker_info_v1` function with your staking address as parameter.
+To verify that your STRK token have been successfully staked, you can call the Staking contract's `get_staker_info_v1` function with your staking address as parameter.
 
 For example, the following can be used to verify your staking on Sepolia:
 
@@ -108,7 +108,7 @@ sncast call \
 
 ```
 
-1. The Staking contract’s address on Sepolia
+1. The Staking contract's address on Sepolia
 
 If all goes well, the result should be similar to the following:
 
@@ -128,13 +128,13 @@ response: [
 
 ```
 
-1. Indicates successfully getting the staker’s info
-2. The validator’s rewards address
-3. The validator’s operational address
-4. The validator’s stake
-5. The validator’s index
-6. The validator’s unclaimed rewards
-7. Indicates successfully getting the delegation pool’s info
-8. The delegation pool’s stake
-9. The delegation pool’s unclaimed rewards
-10. The delegation pool’s commission ($$64_{16} = 100$$)
+1. Indicates successfully getting the staker's info
+2. The validator's rewards address
+3. The validator's operational address
+4. The validator's stake
+5. The validator's index
+6. The validator's unclaimed rewards
+7. Indicates successfully getting the delegation pool's info
+8. The delegation pool's stake
+9. The delegation pool's unclaimed rewards
+10. The delegation pool's commission ($$64_{16} = 100$$)

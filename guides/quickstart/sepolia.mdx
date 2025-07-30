@@ -11,7 +11,7 @@ If you encounter an issue while following this tutorial, check out [*Deploy your
 
 Welcome to the fourth installment of the *Deploy your first Starknet contract* guide! 🥇
 
-Starknet Sepolia is Starknet’s testnet environment designed to provide developers with a testing ground that mirrors the behavior of the Starknet Mainnet while being connected to the Ethereum Sepolia testnet, making it ideal for debugging and optimizing your code before deploying it to production. This installment of the series will therefore guide you through the steps necessary to deploy and interact with the `HelloStarknet` contract on Starknet Sepolia.
+Starknet Sepolia is Starknet's testnet environment designed to provide developers with a testing ground that mirrors the behavior of the Starknet Mainnet while being connected to the Ethereum Sepolia testnet, making it ideal for debugging and optimizing your code before deploying it to production. This installment of the series will therefore guide you through the steps necessary to deploy and interact with the `HelloStarknet` contract on Starknet Sepolia.
 
 ## Deploying a new Sepolia account
 
@@ -21,7 +21,7 @@ Similar to interacting with a Starknet Devnet instance, to interact with Starkne
 To learn how to fetch a predeployed Sepolia account, check out [Troubleshooting](/guides/quickstart/troubleshooting/).
 </Note>
 
-To create the account’s information (private key, address, etc.), navigate into the `hello_starknet` directory created in [Generating `HelloStarknet`](/guides/quickstart/hellostarknet#generating-hellostarknet) and run:
+To create the account's information (private key, address, etc.), navigate into the `hello_starknet` directory created in [Generating `HelloStarknet`](/guides/quickstart/hellostarknet#generating-hellostarknet) and run:
 
 ```shell
 sncast account create \
@@ -58,7 +58,7 @@ transaction: https://sepolia.starkscan.co/tx/0x01340c0328b037bab85d53dd1b3b8040b
 
 ## Deploying `HelloStarknet` on Sepolia
 
-Unlike when using a Starknet Devnet instance, there’s no need for us to declare `HelloStarknet` on Sepolia as it has already been declared before (remember: declaration is a one-time process for each unique contract code). To verify that, you can try declaring it by navigating into the `hello_starknet` directory created in [Generating `HelloStarknet`](/guides/quickstart/hellostarknet#generating-hellostarknet), running:
+Unlike when using a Starknet Devnet instance, there's no need for us to declare `HelloStarknet` on Sepolia as it has already been declared before (remember: declaration is a one-time process for each unique contract code). To verify that, you can try declaring it by navigating into the `hello_starknet` directory created in [Generating `HelloStarknet`](/guides/quickstart/hellostarknet#generating-hellostarknet), running:
 
 ```shell
 sncast --account=sepolia declare \
@@ -98,7 +98,7 @@ transaction: https://sepolia.starkscan.co/tx/0x0723a63261d2df60f571df8a2b8c8c646
 ```
 
 <Warning>
-Your deployed contract’s address will be different the than one listed above. Make sure to use the address of your own deployed contract in the following section.
+Your deployed contract's address will be different the than one listed above. Make sure to use the address of your own deployed contract in the following section.
 </Warning>
 
 ## Interacting with `HelloStarknet` on Sepolia
@@ -125,7 +125,7 @@ transaction: https://sepolia.starkscan.co/tx/0x02b900ba6bfb6a7d256d34c5d3a895abb
 
 ```
 
-Once the invoke transaction is accepted on Starknet Sepolia, you can call your deployed contract’s `get_balance` function to confirm that your deployed contract’s storage — and by extension, the state of Starknet Sepolia — has indeed changed, by running:
+Once the invoke transaction is accepted on Starknet Sepolia, you can call your deployed contract's `get_balance` function to confirm that your deployed contract's storage — and by extension, the state of Starknet Sepolia — has indeed changed, by running:
 
 ```shell
 sncast call \

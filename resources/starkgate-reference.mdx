@@ -13,9 +13,9 @@ Deposits the specified amount of an ERC-20 token to the L1 StarkGate bridge cont
 
 The deposit function does the following:
 
-* Transfers the funds from the caller’s account to the Starknet bridge contract
+* Transfers the funds from the caller's account to the Starknet bridge contract
 
-* Emits the `Deposit` event with the sender’s address on L1, the recipient’s address on L2, and the amount
+* Emits the `Deposit` event with the sender's address on L1, the recipient's address on L2, and the amount
 
 #### Visibility
 
@@ -184,7 +184,7 @@ With this function, a deposit transaction can trigger subsequent actions. For ex
 
 After depositing to another recipient, the L1 handler in `token_bridge.cairo` calls the `on_receive` function in the contract of the recipient.
 
-If `on_receive` returns `true`, then the `on_receive` function succeeded. If it returns `false`, or if it doesn’t return any value because the `on_receive` function is not implemented in the recipient contract, the operation fails and the transaction is reverted.
+If `on_receive` returns `true`, then the `on_receive` function succeeded. If it returns `false`, or if it doesn't return any value because the `on_receive` function is not implemented in the recipient contract, the operation fails and the transaction is reverted.
 
 #### Visibility
 
@@ -364,7 +364,7 @@ Contract: [StarknetTokenBridge.sol](https://github.com/starknet-io/starkgate-con
 
 Creates a Starknet bridge for the specified ERC-20 token contract address in the multi-token bridge contracts and adds the token to the StarkGate Registry.
 
-Does not work for any ERC-20 token bridge’s contract address that is already in the registry.
+Does not work for any ERC-20 token bridge's contract address that is already in the registry.
 
 Enrolling a new bridge creates a new ERC-20 contract on L2. You can see the class hash for this contract using [`get_erc20_class_hash`](#get_erc20_class_hash).
 
@@ -719,7 +719,7 @@ Anyone can call this function, but only after the withdraw message has been reco
 | ------------------- | --------------------------------------------------------------------------------------------------------------- |
 | `address token`     | The address of the contract for the desired token.                                                              |
 | `uint256 amount`    | The amount of the withdrawal.                                                                                   |
-| `address recipient` | (Optional) The recipient. If you don’t specify this parameter, the withdraw function uses the sender’s address. |
+| `address recipient` | (Optional) The recipient. If you don't specify this parameter, the withdraw function uses the sender's address. |
 
 #### State mutability
 
@@ -903,9 +903,9 @@ None.
 
 Initiates a withdrawal from L2. After initiating the withdrawal, the function does the following:
 
-1. Burns the transferred amount of tokens from the balance of the withdrawal’s initiator.
+1. Burns the transferred amount of tokens from the balance of the withdrawal's initiator.
 
-2. Sends a message to the relevant L1 bridge with the amount to be transferred, and the recipient’s address.
+2. Sends a message to the relevant L1 bridge with the amount to be transferred, and the recipient's address.
 
 #### Parameters
 
@@ -952,7 +952,7 @@ If `on_receive` returns `false`, or if the receiving contract does not implement
 | -------- | -------------------------------------------------------------------------------------------------------------------------------------------- |
 | `true`   | The `on_receive` function completed successfully.                                                                                            |
 | `false`  | The `on_receive` function did not complete successfully. The transaction is reverted.                                                        |
-| No value | If the recipients’s smart contract does not implement the `on_receive` function, the call fails to execute, and the transaction is reverted. |
+| No value | If the recipients's smart contract does not implement the `on_receive` function, the call fails to execute, and the transaction is reverted. |
 
 #### Function definition
 

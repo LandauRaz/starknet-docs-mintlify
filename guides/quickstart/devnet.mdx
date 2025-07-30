@@ -65,7 +65,7 @@ To interact with your local Starknet instance, you first need an account. Luckil
 
 ```
 
-This allows to avoid creating and deploying new accounts, and instead simply importing them to Starknet Foundry. To import your local node’s first predeployed account, navigate into the `hello_starknet` directory created in [Generating `HelloStarknet`](/guides/quickstart/hellostarknet/#generating-hellostarknet) and run:
+This allows to avoid creating and deploying new accounts, and instead simply importing them to Starknet Foundry. To import your local node's first predeployed account, navigate into the `hello_starknet` directory created in [Generating `HelloStarknet`](/guides/quickstart/hellostarknet/#generating-hellostarknet) and run:
 
 ```shell
 sncast account import \
@@ -117,7 +117,7 @@ transaction_hash: 0x076e28641d96ee0788f5a960931ee717c5dae36f95f227c02d5578a6898d
 Copied!
 ```
 
-where `class_hash` is the contract’s class hash, which can then be used to deploy an instance of it.
+where `class_hash` is the contract's class hash, which can then be used to deploy an instance of it.
 
 <Tip>
 To learn more about the class hashes, check out [the Cairo Book](https://book.cairo-lang.org/ch100-01-contracts-classes-and-instances.html).
@@ -152,7 +152,7 @@ transaction_hash: 0x04d11358b809c7b8a5aae1a1cf0e72e0b436fb2d0a2dd1a26d009fec7aa7
 
 Now that your instance of `HelloStarknet` is deployed, you can interact with via its functions by either calling or invoking them.
 
-Calling is used for read functions that don’t modify their contract’s storage, and allows querying a smart contract function without sending a transaction. For example, you can call `HelloStarknet`'s `get_balance` function by running:
+Calling is used for read functions that don't modify their contract's storage, and allows querying a smart contract function without sending a transaction. For example, you can call `HelloStarknet`'s `get_balance` function by running:
 
 ```shell
 sncast --profile=devnet call \
@@ -169,7 +169,7 @@ response: [0x0]
 Copied!
 ```
 
-Invoking is used for write functions that modify their contract’s storage, and submits a transaction to the network that changes its state. For example, you can invoke `HelloStarknet`'s `increase_balance` function by running:
+Invoking is used for write functions that modify their contract's storage, and submits a transaction to the network that changes its state. For example, you can invoke `HelloStarknet`'s `increase_balance` function by running:
 
 ```shell
 sncast --profile=devnet invoke \
@@ -187,7 +187,7 @@ transaction_hash: 0x02691af0fb2b720b27ae17c844d72244b8fc35f3a3d57b6549736d9a88f8
 
 ```
 
-You can verify that your deployed contract’s storage — and by extension, the state of your local Starknet instance — has indeed changed by calling `get_balance` again. If all goes well, the result should resemble the following (`4210 = 2a16`):
+You can verify that your deployed contract's storage — and by extension, the state of your local Starknet instance — has indeed changed by calling `get_balance` again. If all goes well, the result should resemble the following (`4210 = 2a16`):
 
 ```
 command: call

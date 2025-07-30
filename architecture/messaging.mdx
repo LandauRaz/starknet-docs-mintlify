@@ -4,11 +4,11 @@ title: "L1 ↔ L2 messaging"
 
 ## Overview
 
-Starknet’s ability to interact with L1 is crucial, and is used by bridges (e.g., for depositing your tokens in the L1 bridge contract, and automatically triggers the minting of the same token on L2), [DeFi pooling](https://starkware.co/resource/defi-pooling/) and [more](https://www.starknet.io/en/ecosystem/dapps). Messaging — both [from L1 to L2](/architecture/messaging#l2-→-l1-messages) and from [L2 to L1](/architecture/messaging#l2-→-l1-message-protocol) — is the mechanism that enables this interaction.
+Starknet's ability to interact with L1 is crucial, and is used by bridges (e.g., for depositing your tokens in the L1 bridge contract, and automatically triggers the minting of the same token on L2), [DeFi pooling](https://starkware.co/resource/defi-pooling/) and [more](https://www.starknet.io/en/ecosystem/dapps). Messaging — both [from L1 to L2](/architecture/messaging#l2-→-l1-messages) and from [L2 to L1](/architecture/messaging#l2-→-l1-message-protocol) — is the mechanism that enables this interaction.
 
 <Warning>
-Starknet’s messaging mechanism is both *asynchronous* and *asymmetric*.
-- *Asynchronous*: Your contract code, whether Cairo or Solidity, cannot await the result of the message being sent on the other layer within your contract code’s execution.
+Starknet's messaging mechanism is both *asynchronous* and *asymmetric*.
+- *Asynchronous*: Your contract code, whether Cairo or Solidity, cannot await the result of the message being sent on the other layer within your contract code's execution.
 - *Asymmetric*: Sending a message from Ethereum to Starknet, L1→L2, is fully automated by the Starknet sequencer, so the message is automatically delivered to the target contract on L2. However, when sending a message from Starknet to Ethereum, L2→L1, the sequencer only sends the hash of the message. You must then consume the message manually using a transaction on L1.
 </Warning>
 
@@ -16,7 +16,7 @@ Additional resources
 
 * [The `send_message_to_L1` syscall](https://book.cairo-lang.org/appendix-08-system-calls.html#send_message_to_l1)
 
-* [The Starknet Core contract’s `sendMessageToL2` function](https://github.com/starkware-libs/cairo-lang/blob/54d7e92a703b3b5a1e07e9389608178129946efc/src/starkware/starknet/solidity/IStarknetMessaging.sol#L13)
+* [The Starknet Core contract's `sendMessageToL2` function](https://github.com/starkware-libs/cairo-lang/blob/54d7e92a703b3b5a1e07e9389608178129946efc/src/starkware/starknet/solidity/IStarknetMessaging.sol#L13)
 
 * [L1-L2 Messaging in the Cairo Book](https://book.cairo-lang.org/ch16-04-L1-L2-messaging.html)
 
@@ -114,7 +114,7 @@ The L1 → L2 message protocol consists of the following stages:
 
 4. The Core Contract receives the state update.
 
-5. The message is cleared from the Core Contract’s storage to consume the message. Clearing the Core Contract’s storage does the following:
+5. The message is cleared from the Core Contract's storage to consume the message. Clearing the Core Contract's storage does the following:
 
    * incurs a fixed cost of 5,000 L1 gas
 
@@ -124,9 +124,9 @@ At this point, the message is handled.
 
 An L1→L2 message consists of the following:
 
-* L1 sender’s address
+* L1 sender's address
 
-* L2 recipient’s contract address
+* L2 recipient's contract address
 
 * Function selector
 
@@ -170,7 +170,7 @@ keccak256(
 The flow described here should only be used in edge cases such as bugs on the Layer 2 contract preventing message consumption.
 </Note>
 
-Consider that Alice sends an L1 asset to a Starknet bridge to transfer it to L2, which generates the corresponding L1→L2 message. Now, consider that the L2 message consumption doesn’t function, which might happen due to a bug in the dApp’s Cairo contract. This bug could result in Alice losing custody of their asset forever.
+Consider that Alice sends an L1 asset to a Starknet bridge to transfer it to L2, which generates the corresponding L1→L2 message. Now, consider that the L2 message consumption doesn't function, which might happen due to a bug in the dApp's Cairo contract. This bug could result in Alice losing custody of their asset forever.
 
 To mitigate this risk, the contract that initiated the L1→L2 message can cancel it by declaring the intent to cancel, waiting five days, and then completing the cancellation. This delay protects the sequencer from a DoS attack in the form of repeatedly sending and canceling a message before it is included in L1, rendering the L2 block which contains the activation of the corresponding L1 handler invalid.
 
@@ -184,7 +184,7 @@ The steps in this flow are as follows:
 
 ### L1 → L2 message fees
 
-An L1 → L2 message induces a transaction on L2, which, unlike regular transactions, is not sent by an account. This calls for a different mechanism for paying the transaction’s fee, for otherwise the sequencer has no incentive of including L1 handler transactions inside a block.
+An L1 → L2 message induces a transaction on L2, which, unlike regular transactions, is not sent by an account. This calls for a different mechanism for paying the transaction's fee, for otherwise the sequencer has no incentive of including L1 handler transactions inside a block.
 
 To avoid having to interact with both L1 and L2 when sending a message, L1 → L2 messages are payable on L1, by sending ETH with the call to the payable function `sendMessageToL2` on the Starknet Core Contract.
 
@@ -201,7 +201,7 @@ The fee itself is calculated in the [same manner](/architecture/fees#overall-fee
 | `FieldElement` | `FieldElement`  | `FieldElement` | `List`   | `FieldElement` |   |
 
 <Note>
-In an L1 handler transaction, the first element of the calldata is always the sender’s Ethereum address.
+In an L1 handler transaction, the first element of the calldata is always the sender's Ethereum address.
 </Note>
 
 #### Hash calculation
@@ -230,7 +230,7 @@ Where:
 
 * `chain_id` is a constant value that specifies the network to which this transaction is sent.
 
-* *h* is the [Pedersen](/architecture/cryptography#pedersen-hash) hash (note that since we’re hashing an array, the # of inputs needs to be appended to the hash).
+* *h* is the [Pedersen](/architecture/cryptography#pedersen-hash) hash (note that since we're hashing an array, the # of inputs needs to be appended to the hash).
 
 * `0` indicates that L1 to L2 message fees are charged on L1.
 
@@ -240,7 +240,7 @@ Where:
 
 * Starting from Starknet version 0.14.0:
 
-  * L1 handlers that fail execution will appear in a block as `REVERTED`, instead of only be written in the feeder gateway’s database as `REJECTED`. The purpose of this change is to simplify the tracking of messages L1 → L2, and the implementation of `getMessageStatus` in particular.
+  * L1 handlers that fail execution will appear in a block as `REVERTED`, instead of only be written in the feeder gateway's database as `REJECTED`. The purpose of this change is to simplify the tracking of messages L1 → L2, and the implementation of `getMessageStatus` in particular.
 
   * The `l1_gas`, `l2_gas`, and `l1_data_gas` execution resources of L1 handlers will be bounded as follows:
 
