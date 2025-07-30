@@ -7,7 +7,7 @@ title: "Fees"
 Every transaction on Starknet requires a small fee to process. The components contributing to this fee include [L2 computation, L2 data, and L1 data](/architecture/fees#fee-components), which are measured in [L2 gas, L1 gas, and L1 data gas](/architecture/fees#fee-resources). A transaction’s fee can be [estimated](/architecture/fees#fee-estimations) and [limited](/architecture/fees#fee-limits), and is ultimately [charged](/architecture/fees#fee-charges) based on a predefined [formula](/architecture/fees#overall-fee).
 
 <Note>
-This section describes fees that are paid on L2 starting in Starknet 0.13.0.For information about messaging fees that are paid on L1, see [L1→L2 message fees](/architecture/messaging/#l1-l2-message-fees).
+This section describes fees that are paid on L2 starting in Starknet 0.13.0. For information about messaging fees that are paid on L1, see [L1→L2 message fees](/architecture/messaging/#l1-l2-message-fees).
 </Note>
 
 ## Fee components
@@ -349,7 +349,7 @@ where:
 * $$D$$ is 1 if the transaction is of type `DECLARE` and 0 otherwise. Declare transactions need to post on L1 the new class hash and compiled class hash which are added to the state.
 
 <Note>
-Improvements to the above pessimistic estimation might be gradually implemented in future versions of Starknet.For example, if different transactions within the same block update the same storage cell, there is no need to charge for both transactions, because only the last value reaches L1. In the future, Starknet might include a refund mechanism for such cases.
+Improvements to the above pessimistic estimation might be gradually implemented in future versions of Starknet. For example, if different transactions within the same block update the same storage cell, there is no need to charge for both transactions, because only the last value reaches L1. In the future, Starknet might include a refund mechanism for such cases.
 </Note>
 
 #### L2→L1 messages
