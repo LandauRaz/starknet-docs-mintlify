@@ -135,7 +135,7 @@ An L1→L2 message consists of the following:
 * Message nonce
 
   <Note>
-  The message nonce is maintained on the Starknet Core Contract on L1, and is incremented whenever a message is sent to L2. The nonce is used to avoid a hash collision between different L1 handler transactions that is caused by the same message being sent on L1 multiple times.For more information, see [L1→L2 structure](/architecture/messaging#l2-→-l1-message-structure).
+  The message nonce is maintained on the Starknet Core Contract on L1, and is incremented whenever a message is sent to L2. The nonce is used to avoid a hash collision between different L1 handler transactions that is caused by the same message being sent on L1 multiple times. For more information, see [L1→L2 structure](/architecture/messaging#l2-→-l1-message-structure).
   </Note>
 
 ### L1 → L2 message structure
@@ -200,9 +200,9 @@ The fee itself is calculated in the [same manner](/architecture/fees#overall-fee
 | -------------- | --------------- | -------------- | -------- | -------------- | - |
 | `FieldElement` | `FieldElement`  | `FieldElement` | `List`   | `FieldElement` |   |
 
-|    |                                                                                                          |
-| -- | -------------------------------------------------------------------------------------------------------- |
-| ** | In an L1 handler transaction, the first element of the calldata is always the sender’s Ethereum address. |
+<Note>
+In an L1 handler transaction, the first element of the calldata is always the sender’s Ethereum address.
+</Note>
 
 #### Hash calculation
 
