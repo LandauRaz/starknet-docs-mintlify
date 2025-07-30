@@ -25,7 +25,7 @@
   "navigation": {
     "groups": [
       {
-        "group": "Getting started",
+        "group": "Getting Started",
         "icon": "seedling",
         "pages": [
           "index",
@@ -50,8 +50,8 @@
         ]
       },
       {
-        "group": "Core concepts",
-        "icon": "atom-simple",
+        "group": "Concepts & Components",
+        "icon": "puzzle-piece",
         "pages": [
           "architecture/overview",
           "architecture/accounts",
@@ -70,15 +70,18 @@
         ]
       },
       {
-        "group": "References",
+        "group": "Resources & References",
         "icon": "books",
         "pages": [
           "references/chain-info",
           "references/compatibility",
+          "references/cairo-book",
+          "references/corelib-docs",
           "references/openrpc",
           "references/transactions-reference",
           "references/messaging-reference",
           "references/starkgate-reference",
+          "references/stwo-book",
           "references/version-notes"
         ]
       }
