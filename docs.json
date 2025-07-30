@@ -75,7 +75,7 @@
         "pages": [
           "references/chain-info",
           "references/compatibility",
-          "link/openrpc",
+          "references/openrpc",
           "references/transactions-reference",
           "references/messaging-reference",
           "references/starkgate-reference",
