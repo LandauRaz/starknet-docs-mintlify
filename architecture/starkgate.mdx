@@ -49,7 +49,7 @@ The following is an overall illustration of StarkGate’s various components:
 The following sections detail the procedures enabled by StarkGate, along with the instructions to perform them.
 
 <Warning>
-  For adding a token to Starknet, see [Joel Mun’s blog](https://9oelm.github.io/2024-03-28-making-sense-of-starknet-architecture-and-l1-l2-messaging/#enroll-a-token-bridge).Note that enrolling a new bridge does not add it to StarkGate’s GUI.
+  For adding a token to Starknet, see [Joel Mun’s blog](https://9oelm.github.io/2024-03-28-making-sense-of-starknet-architecture-and-l1-l2-messaging/#enroll-a-token-bridge). Note that enrolling a new bridge does not add it to StarkGate’s GUI.
 </Warning>
 
 All procedures are subject to [fees](/architecture/messaging/#l1-l2-message-fees) to account for L1→L2 message costs. Fees for depositing funds or enrolling a token bridge on StarkGate can be estimated using the [`estimateDepositFeeWei`](/resources/starkgate-reference/#estimateDepositFeeWei) or [`estimateEnrollmentFeeWei`](/resources/starkgate-reference/#estimateEnrollmentFeeWei) function.
@@ -81,7 +81,7 @@ In order to guard against an attack, it takes approximately five days to cancel 
 To cancel a deposit, call the `depositCancelRequest` request function. When StarkGate receives the cancellation request, a counter begins to count five days. When exactly five days have passed, and the funds still do not appear on L2, you can reclaim the deposit by calling `depositReclaim`.
 
 <Note>
-  As long as the `depositReclaim` was not performed, the deposit may be processed, even if the cancellation delay time has already passed.Only the depositor is allowed to cancel a deposit, and only before depositReclaim was performed.
+  As long as the `depositReclaim` was not performed, the deposit may be processed, even if the cancellation delay time has already passed. Only the depositor is allowed to cancel a deposit, and only before depositReclaim was performed.
 </Note>
 
 #### Depositing funds with a message
