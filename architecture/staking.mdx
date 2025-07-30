@@ -3,7 +3,7 @@ title: "Staking"
 ---
 
 <Warning>
-  The Starknet Improvement Proposal (SNIP) for Bitcoin staking on Starknet is now [live](https://community.starknet.io/t/snip-31-bitcoin-staking-on-starknet/115696)!
+  The Starknet Improvement Proposal (SNIP) for Bitcoin staking on Starknet is now live on the [Starknet community forum](https://community.starknet.io/t/snip-31-bitcoin-staking-on-starknet/115696) and [Sepolia testnet](/resources/chain-info/#sepolia_4)!
   
   Jump into the discussion and help shape the future of Starknet’s decentralization 🌐
 </Warning>
@@ -49,10 +49,12 @@ The following sections describe the details of Starknet’s staking protocol. Th
 | Minimum stake for validators               | 20K STRK     | 1 STRK       |
 | Minting curve yearly inflation cap ($$C$$) | 1.6%         | 1.6%         |
 | Withdrawal security lockup                 | 21 days      | 5 minutes    |
-| Epoch length ($$E$$)                       | 120 blocks   | 40 blocks    |
+| Epoch length ($$E$$)                       | 120 blocks   | 231 blocks   |
 | Epoch duration                             | 3600 seconds | 1200 seconds |
 | Attestation window ($$W$$)                 | 16 blocks    | 16 blocks    |
 | Number of epochs used for latency ($$k$$)  | 1 epoch      | 1 epoch      |
+
+*In the upcoming version's contracts, [already deployed on Sepolia](/resources/chain-info/#sepolia_4), $$C$$ will be 4%.
 
 ### Roles
 
@@ -68,7 +70,7 @@ Starknet’s staking protocol features two options for participation:
 
 ### Addresses
 
-To reduce exposure to threats and enhance security, multiple addresses for defined for both validators and delegators:
+To reduce exposure to threats and enhance security, multiple addresses are defined for both validators and delegators:
 
 * Validator addresses:
 
@@ -77,6 +79,10 @@ To reduce exposure to threats and enhance security, multiple addresses for defin
   * Rewards Address: Used for receiving rewards. This address is only needed when receiving rewards, and therefore is best kept by a cold wallet.
 
   * Operational Address: Used for operational purposes, such as block attestations (starting from the protocol’s second phase), block proposing (starting from the protocol’s third phase), etc. This address is used frequently and doesn’t handle large amounts of funds, and therefore is best kept by a hot wallet. Starting from the protocol’s second phase, however, hacking the operational address can lead to a lose of yield for the validator and its delegators.
+
+  <Warning>
+    If your operational address uses local signing, the account associated with it must be deployed and unprotected (e.g., no Ready Wallet Guardian or Braavos hardware signer).
+  </Warning>
 
 * Delegator addresses:
 
