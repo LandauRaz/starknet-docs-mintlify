@@ -61,7 +61,7 @@
           "architecture/fees",
           "architecture/messaging",
           "architecture/sharp",
-          "architecture/os",
+          "architecture/snos",
           "architecture/staking",
           "architecture/starkgate",
           "architecture/state",

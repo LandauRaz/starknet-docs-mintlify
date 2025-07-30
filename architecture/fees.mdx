@@ -56,7 +56,7 @@ You can find more details in the [Starknet v0.13.1 prerelease notes](https://com
 
 ## Fee limits
 
-Starting in Starknet v0.14.0, all transactions will have to specify STRK-denominated `max_amount` and `max_price_per_unit` for each of the three [fee unit](/architecture/fees#fee-units). A necessary condition for a transaction to enter a block is that `max_price_per_unit` is greater than or equal to the [block’s corresponding price](/architecture/fees#gas-prices) for each resource, but if included sequencers are then enforced by the [Starknet OS](/architecture/os/) (and as such, enforced by a proof) to charge no more than the max price specified by the transaction.
+Starting in Starknet v0.14.0, all transactions will have to specify STRK-denominated `max_amount` and `max_price_per_unit` for each of the three [fee unit](/architecture/fees#fee-units). A necessary condition for a transaction to enter a block is that `max_price_per_unit` is greater than or equal to the [block’s corresponding price](/architecture/fees#gas-prices) for each resource, but if included sequencers are then enforced by the [Starknet OS](/architecture/snos/) (and as such, enforced by a proof) to charge no more than the max price specified by the transaction.
 
 <Note>
 `v3` transactions already provide these bounds (as part of the `resource_bounds` dictionary), while previous versions only provide a WEI-denominated overall `max_fee`.

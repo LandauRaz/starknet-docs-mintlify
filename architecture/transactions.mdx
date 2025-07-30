@@ -54,7 +54,7 @@ The high-level steps in the Starknet transaction lifecycle are as follows:
 
 4. **Execution:** The sequencer batches all transactions that passed the preliminary validation into a block, and applies them to the state sequentially. If a transaction fails during execution, it is included in the block with as reverted.
 
-5. **Proof generation and verification:** The prover uses the [Starknet operating system](/architecture/os/) to computes the proof for the correct execution of all transactions in the block, and transmits it to the L1 verifier, which verifies it. At this point, the L1 state is updated to include the transaction.
+5. **Proof generation and verification:** The prover uses the [Starknet operating system](/architecture/snos/) to computes the proof for the correct execution of all transactions in the block, and transmits it to the L1 verifier, which verifies it. At this point, the L1 state is updated to include the transaction.
 
 ### Mempools
 
