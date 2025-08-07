@@ -32,12 +32,34 @@
         "tab": "Guides",
         "pages": [
           {
-            "group": "Quickstart",
+            "group": "Builders",
             "pages": [
-              "guides/quickstart/environment-setup",
-              "guides/quickstart/hellostarknet",
-              "guides/quickstart/devnet",
-              "guides/quickstart/sepolia"
+              {
+                "group": "Quickstart",
+                "pages": [
+                  "guides/quickstart/environment-setup",
+                  "guides/quickstart/hellostarknet",
+                  "guides/quickstart/devnet",
+                  "guides/quickstart/sepolia"
+                ]
+              },
+              {
+                "group": "Starknet By Example",
+                "pages": [
+                  "guides/starknet-by-example/index"
+                ]
+              }
+            ]
+          },
+          {
+            "group": "Node operators",
+            "pages": [
+              {
+                "group": "Staking on Starknet",
+                "pages": [
+                  "-"
+                ]
+              }
             ]
           }
         ]
