@@ -1,6 +1,6 @@
 {
   "$schema": "https://mintlify.com/docs.json",
-  "theme": "maple",
+  "theme": "mint",
   "name": "Starknet Documentation",
   "colors": {
     "primary": "#2d51c7",
@@ -23,35 +23,27 @@
   },
   "favicon": "/favicon.png",
   "navigation": {
-    "groups": [
+    "tabs": [
       {
-        "group": "Getting Started",
-        "icon": "seedling",
+        "tab": "Overview",
+        "pages": ["index"]
+      },
+      {
+        "tab": "Guides",
         "pages": [
-          "index",
           {
             "group": "Quickstart",
             "pages": [
               "guides/quickstart/environment-setup",
               "guides/quickstart/hellostarknet",
               "guides/quickstart/devnet",
-              "guides/quickstart/sepolia",
-              "guides/quickstart/next-steps",
-              "guides/quickstart/troubleshooting"
-            ]
-          },
-          {
-            "group": "Ecosystem",
-            "pages": [
-              "ecosystem/tools",
-              "ecosystem/integrations"
+              "guides/quickstart/sepolia"
             ]
           }
         ]
       },
       {
-        "group": "Concepts & Components",
-        "icon": "puzzle-piece",
+        "tab": "Concepts",
         "pages": [
           "architecture/overview",
           "architecture/accounts",
@@ -70,8 +62,7 @@
         ]
       },
       {
-        "group": "Resources & References",
-        "icon": "books",
+        "tab": "References",
         "pages": [
           "references/chain-info",
           "references/compatibility",
