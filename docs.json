@@ -26,49 +26,21 @@
     "pages": [
       "index",
       {
-        "group": "Guides",
+        "group": "Quickstart",
         "pages": [
           {
-            "group": "Quickstart",
+            "group": "Builders",
             "pages": [
-              {
-                "group": "Builders",
-                "pages": [
-                  "guides/quickstart/environment-setup",
-                  "guides/quickstart/hellostarknet",
-                  "guides/quickstart/devnet",
-                  "guides/quickstart/sepolia"
-                ]
-              },
-              {
-                "group": "Node operators",
-                "pages": [
-                  "https://www.starknet.io/"
-                ]
-              }
+              "guides/quickstart/environment-setup",
+              "guides/quickstart/hellostarknet",
+              "guides/quickstart/devnet",
+              "guides/quickstart/sepolia"
             ]
           },
           {
-            "group": "Starknet By Example",
+            "group": "Node operators",
             "pages": [
-              {
-                "group": "Basic concepts",
-                "pages": [
-                  "https://www.starknet.io/"
-                ]
-              },
-              {
-                "group": "Advanced concepts",
-                "pages": [
-                  "https://www.starknet.io/"
-                ]
-              },
-              {
-                "group": "Applications",
-                "pages": [
-                  "https://www.starknet.io/"
-                ]
-              }
+              "https://www.starknet.io/"
             ]
           }
         ]
