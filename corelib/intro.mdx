@@ -1,0 +1,28 @@
+---
+title: "Introduction to the Corelib Docs"
+sidebarTitle: "Intro"
+mode: "wide"
+---
+
+The Cairo core library, also known as *corelib*, provides the foundational building blocks for writing provable programs in Cairo. It offers essential utilities, data structures, mathematical functions, cryptographic tools, and system interactions making it suitable for both onchain and offchain development. Whether you are working on Starknet smart contracts, cryptographic applications, or general-purpose Cairo programs, the core library provides the fundamental tools needed.
+
+you can access modules from the corelib in your program via the core prefix as follows
+
+The corelib is available to all Cairo packages by default, meaning its features are available by simply importing specific modules into your program as follows:
+
+```rust
+use core::array::Array;
+
+fn main() {
+    let mut arr = Array::new();
+    arr.append(42);
+}
+```
+
+**How to use this documentation?**
+
+This documentation serves as a comprehensive reference for all components of the corelib. It organizes functionality into modules, constants, functions, types, and traits, allowing developers to explore and understand available features efficiently. It is auto-generated from the core library's codebase using [Scarb](https://docs.swmansion.com/scarb/docs/extensions/documentation-generation.html), so if you find a bug, have a feature request, or want to improve the documentation, simply report an issue or submit a pull request on either [Cairo's](https://github.com/starkware-libs/cairo) or [Scarb's](https://github.com/software-mansion/scarb) GitHub repositories.
+
+If you already know what you are looking for, the fastest way to find it is to use the search bar at the top of the page. Otherwise, you can take [a quick tour of the documentation](#a-quick-tour-of-the-documentation) and start clicking on anything the seems interesting. If this is your first time, we recommend starting with browsing the library's modules and experimenting with their functionality in your Cairo programs.
+
+Happy coding! 𓅃

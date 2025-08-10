@@ -1,6 +1,6 @@
 {
   "$schema": "https://mintlify.com/docs.json",
-  "theme": "mint",
+  "theme": "maple",
   "name": "Starknet Documentation",
   "colors": {
     "primary": "#2d51c7",
@@ -23,19 +23,16 @@
   },
   "favicon": "/favicon.png",
   "navigation": {
-    "tabs": [
+    "pages": [
+      "index",
       {
-        "tab": "Overview",
-        "pages": ["index"]
-      },
-      {
-        "tab": "Guides",
+        "group": "Guides",
         "pages": [
           {
-            "group": "Builders",
+            "group": "Quickstart",
             "pages": [
               {
-                "group": "Quickstart",
+                "group": "Builders",
                 "pages": [
                   "guides/quickstart/environment-setup",
                   "guides/quickstart/hellostarknet",
@@ -44,20 +41,32 @@
                 ]
               },
               {
-                "group": "Starknet By Example",
+                "group": "Node operators",
                 "pages": [
-                  "guides/starknet-by-example/index"
+                  "https://www.starknet.io/"
                 ]
               }
             ]
           },
           {
-            "group": "Node operators",
+            "group": "Starknet By Example",
             "pages": [
               {
-                "group": "Staking on Starknet",
+                "group": "Basic concepts",
                 "pages": [
-                  "-"
+                  "https://www.starknet.io/"
+                ]
+              },
+              {
+                "group": "Advanced concepts",
+                "pages": [
+                  "https://www.starknet.io/"
+                ]
+              },
+              {
+                "group": "Applications",
+                "pages": [
+                  "https://www.starknet.io/"
                 ]
               }
             ]
@@ -65,7 +74,7 @@
         ]
       },
       {
-        "tab": "Concepts",
+        "group": "Architecture",
         "pages": [
           "architecture/overview",
           "architecture/accounts",
@@ -84,21 +93,18 @@
         ]
       },
       {
-        "tab": "References",
+        "group": "References",
         "pages": [
           "references/chain-info",
           "references/compatibility",
-          "references/cairo-book",
-          "references/corelib-docs",
           "references/openrpc",
           "references/transactions-reference",
           "references/messaging-reference",
           "references/starkgate-reference",
-          "references/stwo-book",
           "references/version-notes"
         ]
       }
-    ]
+    ]    
   },
   "logo": {
     "light": "/logo/light.svg",
