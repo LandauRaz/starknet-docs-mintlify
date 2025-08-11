@@ -10,7 +10,7 @@
   "contextual": {
     "options": []
   },
-  "fonts":{
+  "fonts": {
     "heading": {
       "family": "Inter"
     },
@@ -24,29 +24,35 @@
   "favicon": "/favicon.png",
   "navigation": {
     "pages": [
-      "index",
       {
-        "group": "Quickstart",
+        "group": "Getting Started",
+        "icon": "seedling",
         "pages": [
+          "index",
+          "https://www.starknet.io/what-is-starknet/",
           {
-            "group": "Builders",
+            "group": "Quickstart",
             "pages": [
-              "guides/quickstart/environment-setup",
-              "guides/quickstart/hellostarknet",
-              "guides/quickstart/devnet",
-              "guides/quickstart/sepolia"
-            ]
-          },
-          {
-            "group": "Node operators",
-            "pages": [
-              "https://www.starknet.io/"
+              {
+                "group": "Builders",
+                "pages": [
+                  "guides/quickstart/environment-setup",
+                  "guides/quickstart/hellostarknet",
+                  "guides/quickstart/devnet",
+                  "guides/quickstart/sepolia"
+                ]
+              },
+              {
+                "group": "Node operators",
+                "pages": ["https://www.starknet.io/"]
+              }
             ]
           }
         ]
       },
       {
-        "group": "Architecture",
+        "group": "Concepts & Components",
+        "icon": "cubes",
         "pages": [
           "architecture/overview",
           "architecture/accounts",
@@ -65,7 +71,8 @@
         ]
       },
       {
-        "group": "References",
+        "group": "Resources & References",
+        "icon": "books",
         "pages": [
           "references/chain-info",
           "references/compatibility",
@@ -76,7 +83,7 @@
           "references/version-notes"
         ]
       }
-    ]    
+    ]
   },
   "logo": {
     "light": "/logo/light.svg",
