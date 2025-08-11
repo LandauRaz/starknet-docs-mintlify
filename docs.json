@@ -29,17 +29,17 @@
         "icon": "seedling",
         "pages": [
           "index",
-          "https://www.starknet.io/what-is-starknet/",
+          "getting-started/what-is-starknet",
           {
             "group": "Quickstart",
             "pages": [
               {
                 "group": "Builders",
                 "pages": [
-                  "guides/quickstart/environment-setup",
-                  "guides/quickstart/hellostarknet",
-                  "guides/quickstart/devnet",
-                  "guides/quickstart/sepolia"
+                  "getting-started/builders-quickstart/environment-setup",
+                  "getting-started/builders-quickstart/hellostarknet",
+                  "getting-started/builders-quickstart/devnet",
+                  "getting-started/builders-quickstart/sepolia"
                 ]
               },
               {
@@ -54,33 +54,32 @@
         "group": "Concepts & Components",
         "icon": "cubes",
         "pages": [
-          "architecture/overview",
-          "architecture/accounts",
-          "architecture/blocks",
-          "architecture/cryptography",
-          "architecture/data-availability",
-          "architecture/fees",
-          "architecture/messaging",
-          "architecture/sharp",
-          "architecture/snos",
-          "architecture/staking",
-          "architecture/starkgate",
-          "architecture/state",
-          "architecture/strk",
-          "architecture/transactions"
+          "concepts-and-components/overview",
+          "concepts-and-components/accounts",
+          "concepts-and-components/blocks",
+          "concepts-and-components/cryptography",
+          "concepts-and-components/data-availability",
+          "concepts-and-components/fees",
+          "concepts-and-components/messaging",
+          "concepts-and-components/sharp",
+          "concepts-and-components/snos",
+          "concepts-and-components/staking",
+          "concepts-and-components/starkgate",
+          "concepts-and-components/state",
+          "concepts-and-components/strk",
+          "concepts-and-components/transactions"
         ]
       },
       {
         "group": "Resources & References",
         "icon": "books",
         "pages": [
-          "references/chain-info",
-          "references/compatibility",
-          "references/openrpc",
-          "references/transactions-reference",
-          "references/messaging-reference",
-          "references/starkgate-reference",
-          "references/version-notes"
+          "resources-and-references/chain-info",
+          "resources-and-references/compatibility",
+          "resources-and-references/transactions-reference",
+          "resources-and-references/messaging-reference",
+          "resources-and-references/starkgate-reference",
+          "resources-and-references/version-notes"
         ]
       }
     ]
