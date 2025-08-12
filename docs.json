@@ -121,14 +121,9 @@
   "navbar": {
     "links": [
       {
-        "label": "Blog",
-        "href": "https://www.starknet.io/blog/",
-        "icon": "user-group"
-      },
-      {
-        "label": "Community",
-        "href": "https://community.starknet.io/",
-        "icon": "newspaper"
+        "label": "",
+        "href": "https://www.starknet.io",
+        "icon": "home"
       }
     ]
   },
