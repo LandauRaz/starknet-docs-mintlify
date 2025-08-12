@@ -121,7 +121,7 @@
   "navbar": {
     "links": [
       {
-        "label": "",
+        "label": " ",
         "href": "https://www.starknet.io",
         "icon": "home"
       }
