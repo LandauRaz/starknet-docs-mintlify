@@ -1,6 +1,6 @@
 {
   "$schema": "https://mintlify.com/docs.json",
-  "theme": "maple",
+  "theme": "mint",
   "name": "Starknet Documentation",
   "colors": {
     "primary": "#2d51c7",
@@ -23,64 +23,94 @@
   },
   "favicon": "/favicon.png",
   "navigation": {
-    "pages": [
+    "tabs": [
       {
-        "group": "Getting Started",
-        "icon": "seedling",
+        "tab": "Overview",
         "pages": [
-          "index",
-          "getting-started/what-is-starknet",
+          "index"
+        ]
+      },
+      {
+        "tab": "Starknet 101",
+        "pages": [
           {
-            "group": "Quickstart",
+            "group": "Getting Started",
+            "icon": "seedling",
             "pages": [
+              "getting-started/what-is-starknet",
               {
-                "group": "Builders",
+                "group": "Quickstart",
                 "pages": [
-                  "getting-started/builders-quickstart/environment-setup",
-                  "getting-started/builders-quickstart/hellostarknet",
-                  "getting-started/builders-quickstart/devnet",
-                  "getting-started/builders-quickstart/sepolia"
+                  {
+                    "group": "Builders",
+                    "pages": [
+                      "getting-started/builders-quickstart/environment-setup",
+                      "getting-started/builders-quickstart/hellostarknet",
+                      "getting-started/builders-quickstart/devnet",
+                      "getting-started/builders-quickstart/sepolia"
+                    ]
+                  },
+                  {
+                    "group": "Node operators",
+                    "pages": ["https://www.starknet.io/"]
+                  }
                 ]
-              },
-              {
-                "group": "Node operators",
-                "pages": ["https://www.starknet.io/"]
               }
+            ]
+          },
+          {
+            "group": "Core concepts",
+            "icon": "atom-simple",
+            "pages": [
+              "concepts-and-components/overview",
+              "concepts-and-components/accounts",
+              "concepts-and-components/blocks",
+              "concepts-and-components/cryptography",
+              "concepts-and-components/data-availability",
+              "concepts-and-components/fees",
+              "concepts-and-components/messaging",
+              "concepts-and-components/sharp",
+              "concepts-and-components/snos",
+              "concepts-and-components/staking",
+              "concepts-and-components/starkgate",
+              "concepts-and-components/state",
+              "concepts-and-components/strk",
+              "concepts-and-components/transactions"
+            ]
+          },
+          {
+            "group": "Appendices",
+            "icon": "books",
+            "pages": [
+              "resources-and-references/chain-info",
+              "resources-and-references/compatibility",
+              "resources-and-references/transactions-reference",
+              "resources-and-references/messaging-reference",
+              "resources-and-references/starkgate-reference",
+              "resources-and-references/version-notes"
             ]
           }
         ]
       },
       {
-        "group": "Concepts & Components",
-        "icon": "cubes",
-        "pages": [
-          "concepts-and-components/overview",
-          "concepts-and-components/accounts",
-          "concepts-and-components/blocks",
-          "concepts-and-components/cryptography",
-          "concepts-and-components/data-availability",
-          "concepts-and-components/fees",
-          "concepts-and-components/messaging",
-          "concepts-and-components/sharp",
-          "concepts-and-components/snos",
-          "concepts-and-components/staking",
-          "concepts-and-components/starkgate",
-          "concepts-and-components/state",
-          "concepts-and-components/strk",
-          "concepts-and-components/transactions"
-        ]
+        "tab": "Starknet By Example",
+        "pages": ["https://starknet-by-example-archive.voyager.online/"]
       },
       {
-        "group": "Resources & References",
-        "icon": "books",
-        "pages": [
-          "resources-and-references/chain-info",
-          "resources-and-references/compatibility",
-          "resources-and-references/transactions-reference",
-          "resources-and-references/messaging-reference",
-          "resources-and-references/starkgate-reference",
-          "resources-and-references/version-notes"
-        ]
+        "tab": "Cairo Book",
+        "pages": ["https://www.starknet.io/cairo-book/"]
+      },
+      {
+        "tab": "S-two Book",
+        "pages": ["https://zksecurity.github.io/stwo-book/"]
+      },
+      {
+        "tab": "Corelib Docs",
+        "pages": ["https://docs.cairo-lang.org/core/tmp/"]
+      },
+      {
+        "tab": "API Docs",
+        "pages": ["https://github.com/starkware-libs/starknet-specs/blob/master/api/starknet_api_openrpc.json"]
       }
     ]
   },
