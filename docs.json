@@ -51,7 +51,7 @@
         ]
       },
       {
-        "group": "Concepts & Components",
+        "group": "Core Concepts",
         "icon": "cubes",
         "pages": [
           "concepts-and-components/overview",
@@ -71,7 +71,7 @@
         ]
       },
       {
-        "group": "Resources & References",
+        "group": "References",
         "icon": "books",
         "pages": [
           "resources-and-references/chain-info",
