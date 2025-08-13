@@ -1,0 +1,158 @@
+---
+title: "Stwo Prover"
+---
+
+## Overview
+
+Stwo is StarkWare's next-generation zero-knowledge (ZK) prover, designed to significantly enhance the scalability and efficiency of blockchain networks, particularly within the Starknet ecosystem. Building upon the foundation laid by its predecessor Stone, Stwo introduces several key advancements that make it faster, more efficient, and more accessible.
+
+<Tip>
+  Stwo is open-sourced under the Apache 2.0 license, fostering community collaboration and innovation in the ZK proof space.
+</Tip>
+
+Additional resources:
+
+* [Stwo Book](https://docs.starknet.io/stwo-book/) - comprehensive documentation
+* [Stwo Prover: The Next Gen of STARK Scaling Is Here](https://starkware.co/blog/s-two-prover/) on the StarkWare blog
+* [Stwo GitHub Repository](https://github.com/starkware-libs/stwo) - open-source implementation
+
+## What is Stwo?
+
+Stwo is a high-performance STARK prover that leverages the Circle STARK protocol to generate zero-knowledge proofs more efficiently than previous generations. It represents a significant advancement in proving technology, offering enhanced performance through optimized field operations, improved backend architecture, and support for GPU acceleration.
+
+The prover is designed to be the next-generation proving system for Starknet, eventually replacing the Stone prover in [SHARP](/concepts-and-components/sharp) for most proving operations.
+
+## Key Features
+
+### Circle STARK Protocol Integration
+
+Stwo leverages the Circle STARK protocol, a collaborative innovation between StarkWare and Polygon Labs. This protocol enables several key advantages:
+
+- **Mersenne Prime Field M31**: Uses the field M31 (2³¹ - 1), which aligns well with modern computer architectures
+- **Efficient 32-bit Operations**: Most operations can be performed using standard 32-bit computer words
+- **Reduced Computational Overhead**: Smaller field operations lead to faster computations
+
+### Enhanced Performance
+
+Stwo is engineered for exceptional prover performance through several optimizations:
+
+- **Optimized Backend**: Implements STARKs that utilize hash-based SNARKs, offering faster proving compared to elliptic curve-based SNARKs like Groth16 or PLONK
+- **Parallel Processing**: Designed to take advantage of modern multi-core processors
+- **Memory Efficiency**: Optimized memory usage patterns for better cache performance
+
+### GPU Acceleration
+
+Through partnerships like the collaboration between Ingonyama and Starknet, Stwo supports GPU acceleration:
+
+- **ICICLE-Stwo**: A GPU-accelerated version that leverages parallel processing capabilities
+- **Enhanced Throughput**: Significantly improved proving throughput through GPU parallelization
+- **Scalable Performance**: Better performance scaling with hardware improvements
+
+## Technical Architecture
+
+### Field Operations
+
+Stwo operates within the M31 prime field (2³¹ - 1), which provides several technical advantages:
+
+```
+M31 = 2^31 - 1 = 2,147,483,647
+```
+
+This field choice enables:
+- Efficient arithmetic operations using standard 32-bit integers
+- Better alignment with modern CPU architectures
+- Reduced memory requirements compared to larger fields
+
+### Proof Generation Process
+
+The Stwo prover follows a structured approach to generate STARK proofs:
+
+1. **Trace Generation**: Creates the execution trace from the computation
+2. **Polynomial Commitment**: Commits to the trace polynomials using the Circle STARK protocol
+3. **Constraint Verification**: Verifies that the trace satisfies all constraints
+4. **FRI Protocol**: Applies the Fast Reed-Solomon Interactive Oracle Proof protocol
+5. **Proof Packaging**: Packages the proof for verification
+
+### Integration with SHARP
+
+Starting from Starknet version 0.14.0, Stwo is integrated into SHARP's architecture:
+
+- **Primary Prover**: Stwo handles most proof generation tasks
+- **Stone Compatibility**: Stone continues to handle recursive tree root proofs to maintain compatibility with existing onchain verifiers
+- **Seamless Transition**: The integration maintains backward compatibility while providing performance improvements
+
+## Benefits for Starknet
+
+### Reduced Latency and Costs
+
+The enhanced efficiency of Stwo translates to tangible benefits:
+
+- **Faster Proof Generation**: Reduced time to generate proofs for transactions
+- **Lower Transaction Fees**: More efficient proving leads to reduced costs passed to users
+- **Improved User Experience**: Faster confirmation times and lower costs
+
+### Enhanced Scalability
+
+Stwo's performance improvements directly impact Starknet's scalability:
+
+- **Higher Throughput**: Ability to handle larger volumes of transactions
+- **Better Resource Utilization**: More efficient use of computational resources
+- **Future-Proof Architecture**: Designed to scale with hardware improvements
+
+### Developer Benefits
+
+The open-source nature of Stwo provides advantages for developers:
+
+- **Transparency**: Full access to the prover's implementation
+- **Customization**: Ability to modify and optimize for specific use cases
+- **Innovation**: Community-driven improvements and extensions
+
+## Comparison with Stone
+
+| Feature | Stone | Stwo |
+|---------|-------|------|
+| **Field** | Large prime field | M31 (Mersenne prime) |
+| **Architecture** | Traditional STARK | Circle STARK protocol |
+| **Performance** | Baseline | Significantly improved |
+| **GPU Support** | Limited | Native acceleration support |
+| **Open Source** | Yes | Yes (Apache 2.0) |
+
+## Future Developments
+
+### Roadmap
+
+The Stwo prover continues to evolve with planned improvements:
+
+- **Full SHARP Integration**: Complete replacement of Stone for all proving operations
+- **Hardware Optimization**: Further optimizations for specific hardware configurations
+- **Protocol Enhancements**: Continued development of the Circle STARK protocol
+
+### Community Contributions
+
+As an open-source project, Stwo benefits from community contributions:
+
+- **Performance Optimizations**: Community-driven performance improvements
+- **Hardware Support**: Extended support for various hardware configurations
+- **Protocol Research**: Academic and industry research contributions
+
+## Getting Started
+
+### For Developers
+
+To work with Stwo:
+
+1. **Explore the Stwo Book**: Comprehensive documentation at [docs.starknet.io/stwo-book](https://docs.starknet.io/stwo-book/)
+2. **GitHub Repository**: Access the source code at [github.com/starkware-libs/stwo](https://github.com/starkware-libs/stwo)
+3. **Community Resources**: Join the Starknet community for discussions and support
+
+### For Node Operators
+
+Node operators benefit from Stwo's integration:
+
+- **Automatic Updates**: Stwo integration is handled automatically in Starknet updates
+- **Performance Monitoring**: Monitor improved proving performance in node operations
+- **Resource Planning**: Plan for potentially reduced computational requirements
+
+## Conclusion
+
+Stwo represents a significant leap forward in zero-knowledge proving technology, offering substantial improvements in performance, efficiency, and accessibility. Its integration into the Starknet ecosystem through SHARP brings tangible benefits to users, developers, and the broader blockchain community, positioning Starknet for enhanced scalability and cost-effectiveness in the future.
