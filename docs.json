@@ -23,63 +23,130 @@
   },
   "favicon": "/favicon.png",
   "navigation": {
-    "pages": [
+    "dropdowns": [
       {
-        "group": "Getting Started",
-        "icon": "seedling",
+        "dropdown": "Starknet 101",
         "pages": [
-          "index",
-          "getting-started/what-is-starknet",
           {
-            "group": "Quickstart",
+            "group": "Getting Started",
+            "icon": "seedling",
             "pages": [
+              "index",
+              "getting-started/what-is-starknet",
               {
-                "group": "Builders",
+                "group": "Quickstart",
                 "pages": [
-                  "getting-started/builders-quickstart/environment-setup",
-                  "getting-started/builders-quickstart/hellostarknet",
-                  "getting-started/builders-quickstart/devnet",
-                  "getting-started/builders-quickstart/sepolia"
+                  {
+                    "group": "Builders",
+                    "pages": [
+                      "getting-started/builders-quickstart/environment-setup",
+                      "getting-started/builders-quickstart/hellostarknet",
+                      "getting-started/builders-quickstart/devnet",
+                      "getting-started/builders-quickstart/sepolia"
+                    ]
+                  },
+                  {
+                    "group": "Node operators",
+                    "pages": ["https://www.starknet.io/"]
+                  }
                 ]
-              },
-              {
-                "group": "Node operators",
-                "pages": ["https://www.starknet.io/"]
               }
+            ]
+          },
+          {
+            "group": "Core Concepts",
+            "icon": "cubes",
+            "pages": [
+              "concepts-and-components/overview",
+              "concepts-and-components/accounts",
+              "concepts-and-components/blocks",
+              "concepts-and-components/cryptography",
+              "concepts-and-components/data-availability",
+              "concepts-and-components/fees",
+              "concepts-and-components/messaging",
+              "concepts-and-components/sharp",
+              "concepts-and-components/snos",
+              "concepts-and-components/staking",
+              "concepts-and-components/starkgate",
+              "concepts-and-components/state",
+              "concepts-and-components/strk",
+              "concepts-and-components/transactions"
+            ]
+          },
+          {
+            "group": "References",
+            "icon": "books",
+            "pages": [
+              "resources-and-references/chain-info",
+              "resources-and-references/compatibility",
+              "resources-and-references/transactions-reference",
+              "resources-and-references/messaging-reference",
+              "resources-and-references/starkgate-reference",
+              "resources-and-references/version-notes"
             ]
           }
         ]
       },
       {
-        "group": "Core Concepts",
-        "icon": "cubes",
+        "dropdown": "Stwo Book",
         "pages": [
-          "concepts-and-components/overview",
-          "concepts-and-components/accounts",
-          "concepts-and-components/blocks",
-          "concepts-and-components/cryptography",
-          "concepts-and-components/data-availability",
-          "concepts-and-components/fees",
-          "concepts-and-components/messaging",
-          "concepts-and-components/sharp",
-          "concepts-and-components/snos",
-          "concepts-and-components/staking",
-          "concepts-and-components/starkgate",
-          "concepts-and-components/state",
-          "concepts-and-components/strk",
-          "concepts-and-components/transactions"
-        ]
-      },
-      {
-        "group": "References",
-        "icon": "books",
-        "pages": [
-          "resources-and-references/chain-info",
-          "resources-and-references/compatibility",
-          "resources-and-references/transactions-reference",
-          "resources-and-references/messaging-reference",
-          "resources-and-references/starkgate-reference",
-          "resources-and-references/version-notes"
+          {
+            "group": "Introduction",  
+            "pages": [
+              "stwo-book/introduction/why-use-a-proof-system",
+              "stwo-book/introduction/why-stwo"
+            ]
+          },
+          {
+            "group": "AIR Development",
+            "pages": [
+              "stwo-book/air-development/index",
+              {
+                "group": "Writing a Simple AIR",
+                "pages": [
+                  "stwo-book/air-development/writing-a-simple-air/hello-zk-world",
+                  "stwo-book/air-development/writing-a-simple-air/writing-a-spreadsheet",
+                  "stwo-book/air-development/writing-a-simple-air/from-spreadsheet-to-trace-polynomials",
+                  "stwo-book/air-development/writing-a-simple-air/committing-to-the-trace-polynomials",
+                  "stwo-book/air-development/writing-a-simple-air/constraints-over-trace-polynomials",
+                  "stwo-book/air-development/writing-a-simple-air/proving-an-air"
+                ]
+              },
+              "stwo-book/air-development/preprocessed-trace/index",
+              "stwo-book/air-development/static-lookups/index",
+              "stwo-book/air-development/dynamic-lookups/index",
+              "stwo-book/air-development/local-row-constraints/index",
+              "stwo-book/air-development/components/index",
+              "stwo-book/air-development/additional-examples/index"
+            ]
+          },
+          {
+            "group": "Cairo AIR",
+            "pages": [
+              "stwo-book/cairo-air/index",
+              "stwo-book/cairo-air/cairo/index",
+              "stwo-book/cairo-air/basic-building-blocks/index",
+              "stwo-book/cairo-air/main-components/index",
+              "stwo-book/cairo-air/add-opcode/index"
+            ]
+          },
+          {
+            "group": "How Does It Work?",
+            "pages": [
+              "stwo-book/how-it-works/index",
+              "stwo-book/how-it-works/mersenne-prime",
+              "stwo-book/how-it-works/circle-group",
+              "stwo-book/how-it-works/lookups"
+            ]
+          },
+          {
+            "group": "References",
+            "pages": [
+              "stwo-book/benchmarks/index",
+              "stwo-book/awesome-stwo/index",
+              "stwo-book/awesome-circlestark/index"
+            ]
+          }
         ]
       }
     ]
